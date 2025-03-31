@@ -4,8 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SportsNation</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=keyboard_arrow_down" />
 </head>
 <body>
+    <header>
+        <div class="top">
+            <div class="logo">SportsNation</div>
+            <div class="searchbar">
+                <input type="text" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ENTER NAME OF THE SPORT">
+            </div>
+            <div class="category">
+                <div class="selection">CATEGORY <span class="material-symbols-outlined">keyboard_arrow_down</span></div>
+                <div class="dropdown">
+                    <div class="dropdown-item"><a href="indoor.html">INDOOR</a></div>
+                    <div class="dropdown-item"><a href="outdoor.html">OUTDOOR</a></div>
+                </div>
+            </div>
+            <button class="login-btn">Login/Signup</button>
+        </div>
+    </header>
     
+    <main>
+        <h1 class="glowing-text">One Stop Solution for All the Sports Enthusiasts</h1>
+<!-- Chatbot Container -->
+<div class="chatbot-container">
+    <div class="chat-header">
+        <h2>SportsNation Chatbot</h2>
+        <button class="close-btn">&times;</button>
+    </div>
+    <div class="chat-body">
+        <div class="messages">
+            <p class="bot-message">Hello! How can I assist you?</p>
+        </div>
+    </div>
+    <div class="chat-footer">
+        <input type="text" id="user-input" placeholder="Type your message..." />
+        <button id="send-btn">Send</button>
+    </div>
+</div>
+
+<!-- Floating Chat Icon -->
+<button class="chat-icon">💬</button>
+
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
