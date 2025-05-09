@@ -61,7 +61,7 @@
             margin: 0 auto;
             padding: 30px;
             position: relative;
-            z-index: 1;
+            z-index:(audio) 1;
         }
 
         /* Header with glass morphism effect */
@@ -213,38 +213,21 @@
         /* Filter buttons with modern styling */
         .filter-container {
             display: flex;
-            gap: 12px;
+            flex-wrap: wrap;
+            gap: 15px;
             margin-bottom: 25px;
-            overflow-x: auto;
             padding: 10px 0;
-            scrollbar-width: thin;
-            scrollbar-color: var(--accent) var(--secondary-dark);
-        }
-
-        .filter-container::-webkit-scrollbar {
-            height: 6px;
-        }
-
-        .filter-container::-webkit-scrollbar-track {
-            background: var(--secondary-dark);
-            border-radius: 10px;
-        }
-
-        .filter-container::-webkit-scrollbar-thumb {
-            background: var(--accent);
-            border-radius: 10px;
         }
 
         .filter-btn {
             background: var(--card-bg);
             color: var(--text);
-            padding: 10px 24px;
+            padding: 10px 20px;
             border-radius: 50px;
             cursor: pointer;
             transition: var(--transition);
             font-weight: 500;
-            font-size: 14px;
-            white-space: nowrap;
+            font-size: 15px;
             border: 1px solid var(--border);
             display: inline-flex;
             align-items: center;
@@ -252,6 +235,8 @@
             box-shadow: var(--button-shadow);
             position: relative;
             overflow: hidden;
+            min-width: 120px;
+            text-align: center;
         }
 
         .filter-btn::before {
@@ -607,6 +592,12 @@
             .events-container {
                 grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             }
+
+            .filter-btn {
+                min-width: 100px;
+                padding: 8px 16px;
+                font-size: 14px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -626,10 +617,17 @@
             }
 
             .filter-container {
+                gap: 10px;
                 padding: 8px 0;
             }
 
-            .filter-btn, .region-btn {
+            .filter-btn {
+                min-width: 90px;
+                padding: 8px 14px;
+                font-size: 13px;
+            }
+
+            .region-btn {
                 padding: 8px 20px;
                 font-size: 13px;
             }
@@ -654,7 +652,17 @@
                 font-size: 13px;
             }
 
-            .filter-btn, .region-btn {
+            .filter-container {
+                gap: 8px;
+            }
+
+            .filter-btn {
+                min-width: 80px;
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+
+            .region-btn {
                 padding: 8px 16px;
                 font-size: 12px;
             }
@@ -797,7 +805,7 @@
                 league: "IPL 2025 - Match 25",
                 sport: "cricket",
                 region: "india",
-                date: "2025-04-17T15:30:00",
+                date: "2025-04-17T Homemade 15:30:00",
                 venue: "Arun Jaitley Stadium, Delhi",
                 significance: "Mid-table clash for crucial points",
                 watchLinks: [
