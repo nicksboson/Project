@@ -3,52 +3,2207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SportsNation</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=keyboard_arrow_down" />
+    <title>SportsNation | Premium Sports Hub</title>
+    <meta name="description" content="The ultimate destination for sports fans with live scores, breaking news, and in-depth analysis across all major sports.">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <!-- Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+            :root {
+            /* Color Palette */
+            --primary: #00E5B0;
+            --primary-dark: #00B38A;
+            --secondary: #6C63FF;
+            --accent: #FF4D4D;
+            --dark-bg: #0F0F13;
+            --darker-bg: #0A0A0D;
+            --card-bg: #1A1A24;
+            --card-hover: #222230;
+            --text-primary: #F0F0F0;
+            --text-secondary: #B0B0B0;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --success: #4CAF50;
+            --warning: #FF9800;
+            --info: #2196F3;
+            
+            /* Design Tokens */
+            --border-radius: 16px;
+            --box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --section-padding: 6rem 2rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        p {
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.9rem 2rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            gap: 0.5rem;
+            border: none;
+            outline: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: #111;
+            box-shadow: 0 4px 15px rgba(0, 200, 150, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 200, 150, 0.4);
+        }
+
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-dark), var(--secondary));
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .btn-primary:hover::after {
+            opacity: 1;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(0, 200, 150, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Header Styles */
+        header {
+            background-color: rgba(15, 15, 19, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.5rem;
+            max-width: 1600px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            opacity: 0.9;
+        }
+
+        .logo-icon {
+            font-size: 1.6rem;
+            color: var(--primary);
+        }
+
+        .searchbar {
+            position: relative;
+            flex: 0.5;
+            max-width: 500px;
+            min-width: 200px;
+        }
+
+        .searchbar form {
+            position: relative;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 0.8rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            z-index: 2;
+        }
+
+        .searchbar input {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 2.5rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            transition: var(--transition);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .searchbar input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background-color: rgba(0, 200, 150, 0.1);
+            box-shadow: 0 0 0 3px rgba(0, 200, 150, 0.2);
+        }
+
+        .suggestions {
+            position: absolute;
+            top: calc(100% + 5px);
+            left: 0;
+            right: 0;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--box-shadow);
+            max-height: 250px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+        }
+
+        .suggestions.active {
+            display: block;
+        }
+
+        .suggestion-item {
+            padding: 0.8rem 1.2rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .suggestion-item:hover {
+            background-color: var(--card-hover);
+        }
+
+        .suggestion-icon {
+            font-size: 1.1rem;
+            color: var(--primary);
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .category {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .selection {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            padding: 0.5rem 0.8rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .selection:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .dropdown {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            width: 220px;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 0.5rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 100;
+            border: 1px solid var(--border-color);
+        }
+
+        .category:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            padding: 0.7rem 1.2rem;
+            transition: var(--transition);
+        }
+
+        .dropdown-item:hover {
+            background-color: var(--card-hover);
+        }
+
+        .dropdown-item a {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .login-btn {
+            padding: 0.7rem 1.2rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .login-btn:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 6rem 1.5rem;
+            background: linear-gradient(135deg, rgba(15,15,19,0.95) 0%, rgba(26,26,36,0.95) 100%), 
+                        url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(0, 200, 150, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .glowing-text {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--primary-dark), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.1;
+            animation: subtle-glow 100s infinite alternate ease-in-out;
+            position: relative;
+            display: inline-block;
+        }
+
+        .glowing-text::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        @keyframes subtle-glow {
+            from {
+                text-shadow: 0 0 5px rgba(0, 200, 150, 0.3);
+            }
+            to {
+                text-shadow: 0 0 15px rgba(0, 230, 184, 0.7);
+            }
+        }
+
+        .hero-subtext {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            font-weight: 300;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 400;
+        }
+
+        /* News Section */
+        .news-section {
+            padding: var(--section-padding);
+            max-width: 1600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+            margin-left: 1rem;
+        }
+
+        .title-icon {
+            font-size: 1.6rem;
+            color: var(--primary);
+        }
+
+        .news-ticker-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            margin-top: 2.5rem;
+            padding: 1rem 0;
+        }
+
+        .news-ticker {
+            display: flex;
+            gap: 1.5rem;
+            width: max-content;
+            animation: scroll 40s linear infinite;
+            padding-right: 100%;
+        }
+
+        .news-ticker:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-100% - 1.5rem)); }
+        }
+
+        .news-box {
+            min-width: 300px;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .news-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 200, 150, 0.05), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .news-box:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--box-shadow);
+            border-color: var(--primary);
+            background-color: var(--card-hover);
+        }
+
+        .news-box:hover::before {
+            opacity: 1;
+        }
+
+        .sport-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .football { background-color: rgba(0, 100, 255, 0.15); color: #4d9eff; border: 1px solid rgba(77, 158, 255, 0.2); }
+        .basketball { background-color: rgba(255, 80, 0, 0.15); color: #ff8c66; border: 1px solid rgba(255, 140, 102, 0.2); }
+        .tennis { background-color: rgba(0, 200, 150, 0.15); color: var(--primary); border: 1px solid rgba(0, 200, 150, 0.2); }
+        .cricket { background-color: rgba(200, 150, 0, 0.15); color: #ffcc4d; border: 1px solid rgba(255, 204, 77, 0.2); }
+        .swimming { background-color: rgba(0, 180, 255, 0.15); color: #66d9ff; border: 1px solid rgba(102, 217, 255, 0.2); }
+        .athletics { background-color: rgba(255, 60, 60, 0.15); color: #ff6666; border: 1px solid rgba(255, 102, 102, 0.2); }
+        .golf { background-color: rgba(0, 180, 0, 0.15); color: #66ff66; border: 1px solid rgba(102, 255, 102, 0.2); }
+        .cycling { background-color: rgba(255, 120, 0, 0.15); color: #ff9933; border: 1px solid rgba(255, 153, 51, 0.2); }
+        .baseball { background-color: rgba(150, 75, 0, 0.15); color: #cc9966; border: 1px solid rgba(204, 153, 102, 0.2); }
+        .volleyball { background-color: rgba(255, 50, 150, 0.15); color: #ff66aa; border: 1px solid rgba(255, 102, 170, 0.2); }
+        .f1 { background-color: rgba(255, 0, 0, 0.15); color: #ff3333; border: 1px solid rgba(255, 51, 51, 0.2); }
+        .boxing { background-color: rgba(150, 0, 0, 0.15); color: #cc3333; border: 1px solid rgba(204, 51, 51, 0.2); }
+
+        .news-box h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .news-box p {
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .news-time {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Category Cards */
+        .category-cards {
+            padding: var(--section-padding);
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .category-card {
+            position: relative;
+            height: 450px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 2rem;
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+        }
+
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.85) 100%);
+        }
+
+        .indoor-card {
+            background: url('https://images.unsplash.com/photo-1547347298-4074fc3086f0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+        }
+
+        .outdoor-card {
+            background: url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-content {
+            position: relative;
+            z-index: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2.5rem;
+            color: white;
+        }
+
+        .card-content h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1.2rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .card-content p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            max-width: 550px;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+            font-weight: 300;
+        }
+
+        .explore-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.9rem 1.8rem;
+            background-color: var(--primary);
+            color: #111;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+            width: fit-content;
+            font-size: 0.95rem;
+        }
+
+        .explore-btn:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Featured Section */
+        .featured-section {
+            padding: var(--section-padding);
+            text-align: center;
+            background: linear-gradient(135deg, rgba(15, 15, 19, 0.95) 0%, rgba(26, 26, 36, 0.95) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 200, 150, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .featured-heading {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+
+        .featured-subheading {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 3.5rem;
+            font-weight: 300;
+        }
+
+        .featured-cards {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .featured-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 2rem;
+            width: 340px;
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 200, 150, 0.05), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .featured-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            border-color: var(--primary);
+            background-color: var(--card-hover);
+        }
+
+        .featured-card:hover::before {
+            opacity: 1;
+        }
+
+        .featured-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .featured-card:hover .featured-icon {
+            transform: scale(1.1);
+        }
+
+        .featured-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .featured-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* Countdown Timer */
+        .countdown-section {
+            padding: var(--section-padding);
+            text-align: center;
+            background-color: var(--darker-bg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .countdown-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 80% 50%, rgba(255, 77, 77, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .countdown-heading {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .countdown-subheading {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            font-weight: 300;
+        }
+
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            flex-wrap: wrap;
+        }
+
+        .countdown-unit {
+            text-align: center;
+            min-width: 90px;
+        }
+
+        .countdown-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), #ff7a7a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .countdown-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        /* Testimonial Section */
+        .testimonial-section {
+            padding: var(--section-padding);
+            background: linear-gradient(135deg, rgba(15, 15, 19, 0.95) 0%, rgba(26, 26, 36, 0.95) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 20%, rgba(108, 99, 255, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .testimonial-heading {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .testimonial-subheading {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 3.5rem;
+            font-weight: 300;
+        }
+
+        .testimonial-slider {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .testimonial-card {
+            flex: 1 1 calc(33.33% - 1.5rem);
+            text-align: center;
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 280px;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 200, 150, 0.05), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            border-color: var(--primary);
+            background-color: var(--card-hover);
+        }
+
+        .testimonial-card:hover::before {
+            opacity: 1;
+        }
+
+        .testimonial-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover .testimonial-avatar {
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 200, 150, 0.3);
+        }
+
+        .testimonial-name {
+            font-weight: 700;
+            margin: 1rem 0;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-role {
+            color: var(--primary);
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-style: italic;
+            position: relative;
+            font-weight: 300;
+        }
+
+        .testimonial-text::before,
+        .testimonial-text::after {
+            content: '"';
+            font-size: 1.5rem;
+            color: var(--primary);
+            opacity: 0.5;
+        }
+
+        .testimonial-text::before {
+            margin-right: 0.5rem;
+        }
+
+        .testimonial-text::after {
+            margin-left: 0.5rem;
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            padding: var(--section-padding);
+            background: var(--gradient);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .newsletter-container {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .newsletter-heading {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: #111;
+        }
+
+        .newsletter-subheading {
+            font-size: 1.1rem;
+            color: rgba(0, 0, 0, 0.8);
+            margin-bottom: 2rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 550px;
+            margin: 0 auto;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 0.9rem 1.2rem;
+            border-radius: var(--border-radius);
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            transition: var(--transition);
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .newsletter-btn {
+            padding: 0.9rem 1.8rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            background-color: #111;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+        }
+
+        .newsletter-btn:hover {
+            background-color: black;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--darker-bg);
+            padding: 5rem 1.5rem 2.5rem;
+            border-top: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .footer-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-brand {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.8rem;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .footer-links {
+            flex: 2;
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .links-column {
+            flex: 1;
+            min-width: 160px;
+        }
+
+        .links-column h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+            color: var(--text-primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .links-column h4::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--gradient);
+        }
+
+        .links-column a {
+            display: block;
+            color: var(--text-secondary);
+            text-decoration: none;
+            margin-bottom: 0.7rem;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        .links-column a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .app-download {
+            margin-top: 1.8rem;
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .app-store, .play-store {
+            display: flex;
+            flex-direction: column;
+            padding: 0.7rem 1rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: left;
+            min-width: 140px;
+        }
+
+        .app-store:hover, .play-store:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .app-store span:first-child, .play-store span:first-child {
+            font-size: 0.65rem;
+            color: var(--text-secondary);
+        }
+
+        .app-store span:last-child, .play-store span:last-child {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .footer-bottom {
+            max-width: 1600px;
+            margin: 3.5rem auto 0;
+            padding-top: 2.5rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            transition: var(--transition);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+            background-color: rgba(0, 200, 150, 0.1);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 300;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--gradient);
+            color: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: rgba(0,0,0,0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: transparent;
+            margin: 0;
+            padding: 0;
+            border: none;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            font-size: 28px;
+            color: white;
+            cursor: pointer;
+            z-index: 10;
+            transition: var(--transition);
+            background-color: rgba(0, 0, 0, 0.5);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .close-btn:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+            border-color: var(--primary);
+        }
+
+        .modal-content iframe {
+            width: 85%;
+            height: 85%;
+            border: none;
+            border-radius: var(--border-radius);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            max-width: 700px;
+            animation: slideUp 0.4s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .top { flex-wrap: wrap; gap: 1.2rem; padding: 1rem; }
+            .searchbar { order: 1; flex: 1 1 100%; max-width: 100%; min-width: 100%; }
+            .hero { padding: 5rem 1.2rem; }
+            .glowing-text { font-size: 3rem; }
+            .section-title { font-size: 2.2rem; }
+            .featured-heading, .countdown-heading, .testimonial-heading { font-size: 2.2rem; }
+            .category-card { height: 400px; }
+            .card-content h3 { font-size: 2.2rem; }
+        }
+
+        @media (max-width: 992px) {
+            .main-nav { display: none; }
+            .auth-buttons { margin-left: auto; }
+            .hero { padding: 4.5rem 1rem; }
+            .glowing-text { font-size: 2.8rem; }
+            .hero-subtext { font-size: 1.1rem; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+            .category-card { height: 380px; }
+            .card-content h3 { font-size: 2rem; }
+            .card-content p { font-size: 1rem; }
+            .testimonial-card { flex: 1 1 calc(50% - 1.5rem); }
+            .newsletter-form { flex-direction: column; }
+            .explore-btn { padding: 0.8rem 1.5rem; font-size: 0.9rem; }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --section-padding: 4rem 1.5rem;
+                --border-radius: 12px;
+            }
+            
+            .logo { font-size: 1.3rem; }
+            .logo-icon { font-size: 1.5rem; }
+            .searchbar input { padding: 0.7rem 1rem 0.7rem 2.2rem; font-size: 0.85rem; }
+            .search-icon { left: 0.7rem; font-size: 0.9rem; }
+            .suggestions { max-height: 200px; }
+            .suggestion-item { padding: 0.7rem 1rem; font-size: 0.85rem; }
+            .login-btn { padding: 0.6rem 1rem; font-size: 0.85rem; }
+            
+            .hero { padding: 4rem 1rem; }
+            .glowing-text { font-size: 2.3rem; }
+            .hero-subtext { font-size: 1rem; margin-bottom: 2rem; }
+            .stats-bar { gap: 1.5rem; margin-top: 3rem; }
+            .stat-number { font-size: 2rem; }
+            .stat-label { font-size: 0.8rem; }
+            
+            .section-title { font-size: 2rem; }
+            .title-icon { font-size: 1.4rem; }
+            .news-box { min-width: 280px; padding: 1.2rem; }
+            .news-box h3 { font-size: 1.2rem; }
+            .news-box p { font-size: 0.9rem; }
+            .sport-tag { font-size: 0.7rem; padding: 0.3rem 0.7rem; }
+            .news-time { font-size: 0.75rem; }
+            
+            .category-card { height: 350px; }
+            .card-content { padding: 2rem; }
+            .card-content h3 { font-size: 1.8rem; }
+            .card-content p { font-size: 0.95rem; max-width: 100%; }
+            .explore-btn { padding: 0.7rem 1.4rem; font-size: 0.85rem; }
+            
+            .featured-heading, .countdown-heading, .testimonial-heading { font-size: 2rem; }
+            .featured-subheading, .countdown-subheading, .testimonial-subheading { font-size: 1rem; }
+            .featured-card { width: 100%; max-width: 360px; padding: 1.8rem; }
+            .featured-icon { font-size: 2.8rem; }
+            .featured-title { font-size: 1.3rem; }
+            .featured-description { font-size: 0.9rem; }
+            
+            .countdown-timer { gap: 1.5rem; }
+            .countdown-unit { min-width: 80px; }
+            .countdown-number { font-size: 2.5rem; }
+            .countdown-label { font-size: 0.85rem; }
+            
+            .testimonial-card { flex: 1 1 100%; padding: 1.8rem; min-height: 260px; }
+            .testimonial-avatar { width: 60px; height: 60px; }
+            .testimonial-name { font-size: 1.1rem; }
+            .testimonial-role { font-size: 0.8rem; }
+            .testimonial-text { font-size: 0.9rem; }
+            
+            .newsletter-heading { font-size: 2rem; }
+            .newsletter-subheading { font-size: 1rem; }
+            .newsletter-input { padding: 0.8rem 1rem; font-size: 0.9rem; }
+            .newsletter-btn { padding: 0.8rem 1.5rem; font-size: 0.9rem; }
+            
+            .footer-container { gap: 2rem; }
+            .footer-logo { font-size: 1.5rem; }
+            .footer-description { font-size: 0.85rem; }
+            .links-column { min-width: 140px; }
+            .links-column h4 { font-size: 1rem; }
+            .links-column a { font-size: 0.85rem; }
+            .app-store, .play-store { min-width: 130px; padding: 0.6rem 0.9rem; }
+            .app-store span:last-child, .play-store span:last-child { font-size: 0.95rem; }
+            .footer-bottom { margin-top: 3rem; padding-top: 2rem; }
+            .copyright { font-size: 0.8rem; }
+            .social-links a { width: 34px; height: 34px; font-size: 1rem; }
+            
+            .back-to-top { width: 40px; height: 40px; font-size: 1rem; bottom: 1rem; right: 1rem; }
+        }
+
+        @media (max-width: 576px) {
+            :root {
+                --section-padding: 3.5rem 1rem;
+                --border-radius: 10px;
+            }
+            
+            .top { padding: 0.8rem; gap: 1rem; }
+            .logo { font-size: 1.2rem; }
+            .logo-icon { font-size: 1.4rem; }
+            .logo span { display: none; }
+            .searchbar { min-width: 100%; }
+            .searchbar input { padding: 0.6rem 1rem 0.6rem 2rem; font-size: 0.8rem; }
+            .search-icon { left: 0.6rem; font-size: 0.85rem; }
+            .suggestions { max-height: 180px; border-radius: 8px; }
+            .suggestion-item { padding: 0.6rem 0.9rem; font-size: 0.8rem; }
+            .suggestion-icon { font-size: 1rem; }
+            .login-btn { padding: 0.5rem 0.9rem; font-size: 0.8rem; }
+            
+            .hero { padding: 3.5rem 0.8rem; }
+            .glowing-text { font-size: 2rem; }
+            .glowing-text::after { width: 60px; height: 2px; }
+            .hero-subtext { font-size: 0.95rem; margin-bottom: 1.8rem; }
+            .cta-buttons { gap: 0.8rem; }
+            .btn { padding: 0.7rem 1.5rem; font-size: 0.9rem; }
+            .stats-bar { gap: 1.2rem; margin-top: 2.5rem; }
+            .stat-number { font-size: 1.8rem; }
+            .stat-label { font-size: 0.75rem; }
+            
+            .section-title { font-size: 1.8rem; flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+            .section-title::after { display: none; }
+            .title-icon { font-size: 1.3rem; }
+            .news-ticker-container { margin-top: 2rem; }
+            .news-box { min-width: 260px; padding: 1rem; }
+            .news-box h3 { font-size: 1.1rem; }
+            .news-box p { font-size: 0.85rem; margin-bottom: 1rem; }
+            .sport-tag { font-size: 0.65rem; padding: 0.3rem 0.6rem; }
+            .news-time { font-size: 0.7rem; }
+            
+            .category-card { height: 320px; margin-bottom: 1.5rem; }
+            .card-content { padding: 1.5rem; }
+            .card-content h3 { font-size: 1.6rem; }
+            .card-content p { font-size: 0.9rem; }
+            .explore-btn { padding: 0.6rem 1.2rem; font-size: 0.8rem; }
+            
+            .featured-heading, .countdown-heading, .testimonial-heading { font-size: 1.8rem; }
+            .featured-subheading, .countdown-subheading, .testimonial-subheading { font-size: 0.95rem; margin-bottom: 2.5rem; }
+            .featured-card { padding: 1.5rem; max-width: 100%; }
+            .featured-icon { font-size: 2.5rem; margin-bottom: 1.2rem; }
+            .featured-title { font-size: 1.2rem; }
+            .featured-description { font-size: 0.85rem; }
+            
+            .countdown-timer { gap: 1.2rem; }
+            .countdown-unit { min-width: 70px; }
+            .countdown-number { font-size: 2.2rem; }
+            .countdown-label { font-size: 0.8rem; }
+            
+            .testimonial-card { padding: 1.5rem; min-height: 240px; }
+            .testimonial-avatar { width: 55px; height: 55px; }
+            .testimonial-name { font-size: 1rem; }
+            .testimonial-role { font-size: 0.75rem; }
+            .testimonial-text { font-size: 0.85rem; }
+            
+            .newsletter-heading { font-size: 1.8rem; }
+            .newsletter-subheading { font-size: 0.95rem; }
+            .newsletter-form { max-width: 100%; }
+            .newsletter-input { padding: 0.7rem 0.9rem; font-size: 0.85rem; }
+            .newsletter-btn { padding: 0.7rem 1.2rem; font-size: 0.85rem; }
+            
+            .footer-container { flex-direction: column; gap: 1.8rem; }
+            .footer-logo { font-size: 1.4rem; }
+            .footer-description { font-size: 0.8rem; }
+            .footer-links { gap: 2rem; }
+            .links-column { min-width: 100%; }
+            .links-column h4 { font-size: 0.95rem; }
+            .links-column a { font-size: 0.8rem; }
+            .app-download { gap: 0.7rem; }
+            .app-store, .play-store { min-width: 120px; padding: 0.5rem 0.8rem; }
+            .app-store span:first-child, .play-store span:first-child { font-size: 0.6rem; }
+            .app-store span:last-child, .play-store span:last-child { font-size: 0.9rem; }
+            .footer-bottom { flex-direction: column-reverse; text-align: center; margin-top: 2.5rem; padding-top: 1.8rem; }
+            .social-links { justify-content: center; gap: 1rem; }
+            .social-links a { width: 32px; height: 32px; font-size: 0.95rem; }
+            .copyright { font-size: 0.75rem; }
+            
+            .modal-content iframe { width: 90%; height: 75%; max-width: 100%; }
+            .close-btn { top: 15px; right: 15px; width: 40px; height: 40px; font-size: 24px; }
+            .back-to-top { width: 38px; height: 38px; font-size: 0.95rem; }
+        }
+
+        @media (max-width: 360px) {
+            :root {
+                --section-padding: 3rem 0.8rem;
+            }
+            
+            .top { padding: 0.7rem; }
+            .logo { font-size: 1.1rem; }
+            .logo-icon { font-size: 1.3rem; }
+            .searchbar input { padding: 0.5rem 0.8rem 0.5rem 1.8rem; font-size: 0.75rem; }
+            .search-icon { left: 0.5rem; font-size: 0.8rem; }
+            .login-btn { padding: 0.5rem 0.8rem; font-size: 0.75rem; }
+            
+            .hero { padding: 3rem 0.7rem; }
+            .glowing-text { font-size: 1.8rem; }
+            .hero-subtext { font-size: 0.9rem; }
+            .btn { padding: 0.6rem 1.2rem; font-size: 0.85rem; }
+            .stats-bar { gap: 1rem; }
+            .stat-number { font-size: 1.6rem; }
+            .stat-label { font-size: 0.7rem; }
+            
+            .section-title { font-size: 1.6rem; }
+            .title-icon { font-size: 1.2rem; }
+            .news-box { min-width: 240px; padding: 0.9rem; }
+            .news-box h3 { font-size: 1rem; }
+            .news-box p { font-size: 0.8rem; }
+            .sport-tag { font-size: 0.6rem; padding: 0.25rem 0.5rem; }
+            .news-time { font-size: 0.65rem; }
+            
+            .category-card { height: 300px; }
+            .card-content { padding: 1.2rem; }
+            .card-content h3 { font-size: 1.4rem; }
+            .card-content p { font-size: 0.85rem; }
+            .explore-btn { padding: 0.5rem 1rem; font-size: 0.75rem; }
+            
+            .featured-heading, .countdown-heading, .testimonial-heading { font-size: 1.6rem; }
+            .featured-subheading, .countdown-subheading, .testimonial-subheading { font-size: 0.9rem; }
+            .featured-card { padding: 1.2rem; }
+            .featured-icon { font-size: 2.2rem; }
+            .featured-title { font-size: 1.1rem; }
+            .featured-description { font-size: 0.8rem; }
+            
+            .countdown-timer { gap: 1rem; }
+            .countdown-unit { min-width: 60px; }
+            .countdown-number { font-size: 2rem; }
+            .countdown-label { font-size: 0.75rem; }
+            
+            .testimonial-card { padding: 1.2rem; min-height: 220px; }
+            .testimonial-avatar { width: 50px; height: 50px; }
+            .testimonial-name { font-size: 0.95rem; }
+            .testimonial-role { font-size: 0.7rem; }
+            .testimonial-text { font-size: 0.8rem; }
+            
+            .newsletter-heading { font-size: 1.6rem; }
+            .newsletter-subheading { font-size: 0.9rem; }
+            .newsletter-input { padding: 0.6rem 0.8rem; font-size: 0.8rem; }
+            .newsletter-btn { padding: 0.6rem 1rem; font-size: 0.8rem; }
+            
+            .footer-logo { font-size: 1.3rem; }
+            .footer-description { font-size: 0.75rem; }
+            .links-column h4 { font-size: 0.9rem; }
+            .links-column a { font-size: 0.75rem; }
+            .app-store, .play-store { min-width: 110px; padding: 0.5rem 0.7rem; }
+            .app-store span:last-child, .play-store span:last-child { font-size: 0.85rem; }
+            .social-links a { width: 30px; height: 30px; font-size: 0.9rem; }
+            .copyright { font-size: 0.7rem; }
+            
+            .modal-content iframe { width: 95%; height: 70%; }
+            .close-btn { top: 12px; right: 12px; width: 36px; height: 36px; font-size: 22px; }
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+
+        .slide-up {
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+    </style>
 </head>
 <body>
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Header -->
     <header>
         <div class="top">
-            <div class="logo">SportsNation</div>
+            <a href="index.html" class="logo">
+                <span class="logo-icon">🏆</span>
+                <span>SportsNation</span>
+            </a>
             <div class="searchbar">
-                <input type="text" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ENTER NAME OF THE SPORT">
+                <form id="searchForm" onsubmit="handleSearch(event)">
+                    <span class="search-icon material-symbols-rounded">search</span>
+                    <input type="text" id="searchInput" placeholder="Search for sports, teams, players..." autocomplete="off">
+                    <div id="suggestions" class="suggestions"></div>
+                </form>
             </div>
-            <div class="category">
-                <div class="selection">CATEGORY <span class="material-symbols-outlined">keyboard_arrow_down</span></div>
-                <div class="dropdown">
-                    <div class="dropdown-item"><a href="indoor.html">INDOOR</a></div>
-                    <div class="dropdown-item"><a href="outdoor.html">OUTDOOR</a></div>
+            <nav class="main-nav">
+                <div class="category">
+                    <div class="selection">CATEGORIES <span class="material-symbols-rounded">keyboard_arrow_down</span></div>
+                    <div class="dropdown">
+                        <div class="dropdown-item"><a href="#news-section"><i class="fas fa-newspaper"></i> Latest News</a></div>
+                        <div class="dropdown-item"><a href="#indoor-section"><i class="fas fa-basketball-ball"></i> Indoor Sports</a></div>
+                        <div class="dropdown-item"><a href="#outdoor-section"><i class="fas fa-futbol"></i> Outdoor Sports</a></div>
+                       
+                        <div class="dropdown-item"><a href="#featured-section"><i class="fas fa-star"></i> Featured</a></div>
+                    </div>
                 </div>
+                <a href="https://edition.cnn.com/sport" class="nav-link">Trending</a>
+                <a href="events.html" class="nav-link">Events</a>
+            </nav>
+            <div class="auth-buttons">
+                <button class="login-btn" style="background: var(--gradient); color: #111; border: none;" onclick="openLoginModal()">Sign Up</button>
             </div>
-            <button class="login-btn">Login/Signup</button>
         </div>
     </header>
-    
+
     <main>
-        <h1 class="glowing-text">One Stop Solution for All the Sports Enthusiasts</h1>
-<!-- Chatbot Container -->
-<div class="chatbot-container">
-    <div class="chat-header">
-        <h2>SportsNation Chatbot</h2>
-        <button class="close-btn">&times;</button>
-    </div>
-    <div class="chat-body">
-        <div class="messages">
-            <p class="bot-message">Hello! How can I assist you?</p>
-        </div>
-    </div>
-    <div class="chat-footer">
-        <input type="text" id="user-input" placeholder="Type your message..." />
-        <button id="send-btn">Send</button>
-    </div>
-</div>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content" data-aos="fade-up">
+                <h1 class="glowing-text">Your Ultimate <span>Sports</span> Destination</h1>
+                <p class="hero-subtext">Live scores, breaking news, in-depth analysis, and premium content across all major sports worldwide</p>
+                <div class="cta-buttons">
+                    <a href="#category-cards" class="btn btn-primary">Explore Sports</a>
+                    <a href="https://www.hotstar.com/in/sports" target="_blank" class="btn btn-secondary">
+                        <i class="fas fa-play"></i> Watch Live
+                    </a>
+                </div>
+            </div>
+            
+            <div class="stats-bar" data-aos="fade-up" data-aos-delay="300">
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Sports Covered</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10K+</div>
+                    <div class="stat-label">Live Events</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Active Users</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Updates</div>
+                </div>
+            </div>
+        </section>
 
-<!-- Floating Chat Icon -->
-<button class="chat-icon">💬</button>
+        <!-- News Section -->
+        <section id="news-section" class="news-section">
+            <h2 class="section-title" data-aos="fade-up">
+                <span class="title-icon"><i class="fas fa-newspaper"></i></span>
+                <span>Latest Headlines</span>
+            </h2>
+            <div class="news-ticker-container" data-aos="fade-up" data-aos-delay="200">
+                <div class="news-ticker">
+                    <div class="news-box">
+                        <div class="sport-tag football"><i class="fas fa-futbol"></i> Football</div>
+                        <h3>Champions League Semifinals Draw</h3>
+                        <p>European giants face off in thrilling semifinal matchups with record-breaking viewership expected</p>
+                        <span class="news-time"><i class="far fa-clock"></i> 1 hour ago</span>
+                    </div>
+                    <div class="news-box">
+                        <div class="sport-tag basketball"><i class="fas fa-basketball-ball"></i> Basketball</div>
+                        <h3>NBA Playoffs: Conference Finals Set</h3>
+                        <p>Top seeds advance after intense semifinal series that went down to the wire in game 7</p>
+                        <span class="news-time"><i class="far fa-clock"></i> 3 hours ago</span>
+                    </div>
+                    <div class="news-box">
+                        <div class="sport-tag tennis"><i class="fas fa-table-tennis"></i> Tennis</div>
+                        <h3>French Open Wildcards Announced</h3>
+                        <p>Young talents get chance to shine at Roland Garros as organizers aim to promote new stars</p>
+                        <span class="news-time"><i class="far fa-clock"></i> 5 hours ago</span>
+                    </div>
+                    <div class="news-box">
+                        <div class="sport-tag cricket"><i class="fas fa-baseball-ball"></i> Cricket</div>
+                        <h3>IPL 2025: Record-breaking Auction</h3>
+                        <p>Franchises spend big on international stars with several players crossing the $2 million mark</p>
+                        <span class="news-time"><i class="far fa-clock"></i> 7 hours ago</span>
+                    </div>
+                    <div class="news-box">
+                        <div class="sport-tag swimming"><i class="fas fa-swimming-pool"></i> Swimming</div>
+                        <h3>World Championships Qualifiers</h3>
+                        <p>National records tumble in qualifying events as athletes push for Paris 2024 standards</p>
+                        <span class="news-time"><i class="far fa-clock"></i> 9 hours ago</span>
+                    </div>
+                    <div class="news-box">
+                        <div class="sport-tag athletics"><i class="fas fa-running"></i> Athletics</div>
+                        <h3>Diamond League Returns to Doha</h3>
+                        <p>Sprinters prepare for first major meet of season with several Olympic medalists confirmed</p>
+                        <span class="news-time"><i class="far fa-clock"></i> 11 hours ago</span>
+                    </div>
+                    <div class="news-box">
+                        <div class="sport-tag golf"><i class="fas fa-golf-ball"></i> Golf</div>
+                        <h3>Masters Tournament Preview</h3>
+                        <p>Defending champion looks to repeat at Augusta as young challengers aim for green jacket</p>
+                        <span class="news-time"><i class="far fa-clock"></i> 13 hours ago</span>
+                    </div>
+                    <div class="news-box">
+                        <div class="sport-tag cycling"><i class="fas fa-biking"></i> Cycling</div>
+                        <h3>Tour de France Route Revealed</h3>
+                        <p>Organizers announce challenging mountain stages that could decide the yellow jersey</p>
+                        <span class="news-time"><i class="far fa-clock"></i> 15 hours ago</span>
+                    </div>
+                    <div class="news-box">
+                        <div class="sport-tag baseball"><i class="fas fa-baseball-ball"></i> Baseball</div>
+                        <h3>MLB Opening Week Records</h3>
+                        <p>Rookies make immediate impact in big leagues with unprecedented debut performances</p>
+                        <span class="news-time"><i class="far fa-clock"></i> 17 hours ago</span>
+                    </div>
+                    <div class="news-box">
+                        <div class="sport-tag volleyball"><i class="fas fa-volleyball-ball"></i> Volleyball</div>
+                        <h3>Nations League: Team USA Dominates</h3>
+                        <p>American squad remains undefeated in pool play with commanding straight-set victories</p>
+                        <span class="news-time"><i class="far fa-clock"></i> 19 hours ago</span>
+                    </div>
+                    <div class="news-box">
+                        <div class="sport-tag f1"><i class="fas fa-flag-checkered"></i> Formula 1</div>
+                        <h3>Monaco Grand Prix Qualifying</h3>
+                        <p>Red Bull secures front row lockout with record-breaking lap around the street circuit</p>
+                        <span class="news-time"><i class="far fa-clock"></i> 21 hours ago</span>
+                    </div>
+                    <div class="news-box">
+                        <div class="sport-tag boxing"><i class="fas fa-boxing-glove"></i> Boxing</div>
+                        <h3>Undisputed Heavyweight Title Fight</h3>
+                        <p>Champion defends belt in 12-round thriller that had fans on their feet throughout</p>
+                        <span class="news-time"><i class="far fa-clock"></i> 23 hours ago</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
+        <!-- Category Cards -->
+        <section id="category-cards" class="category-cards">
+            <h2 class="section-title" data-aos="fade-up">
+                <span class="title-icon"><i class="fas fa-trophy"></i></span>
+                <span>Explore Sports</span>
+            </h2>
+            <div id="indoor-section" class="category-card indoor-card" data-aos="fade-up">
+                <div class="card-overlay"></div>
+                <div class="card-content">
+                    <h3><i class="fas fa-basketball-ball"></i> Indoor Sports</h3>
+                    <p>From the hardwood courts of basketball to the fast-paced action of table tennis and badminton, discover the thrilling world of indoor sports with our comprehensive coverage, expert analysis, and exclusive content.</p>
+                    <a href="indoor.html" class="explore-btn">
+                        <i class="fas fa-arrow-right"></i> Discover Indoor
+                    </a>
+                </div>
+            </div>
+            <div id="outdoor-section" class="category-card outdoor-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-overlay"></div>
+                <div class="card-content">
+                    <h3><i class="fas fa-futbol"></i> Outdoor Sports</h3>
+                    <p>Experience the grandeur of outdoor sports from the beautiful game of football to the strategic battles of cricket and tennis. Get live updates, in-depth statistics, and behind-the-scenes access to all the action.</p>
+                    <a href="outdoor.html" class="explore-btn">
+                        <i class="fas fa-arrow-right"></i> Explore Outdoor
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Section -->
+        <section id="featured-section" class="featured-section">
+            <h2 class="featured-heading" data-aos="fade-up">Why Choose SportsNation?</h2>
+            <p class="featured-subheading" data-aos="fade-up" data-aos-delay="100">Premium features designed for true sports enthusiasts</p>
+            <div class="featured-cards">
+                <div class="featured-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="featured-icon"><i class="fas fa-tv"></i></div>
+                    <div class="featured-title">Live & On-Demand</div>
+                    <p class="featured-description">Never miss a moment with our comprehensive live coverage and on-demand replays of all major sporting events worldwide, available across all your devices.</p>
+                </div>
+                <div class="featured-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="featured-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="featured-title">Advanced Analytics</div>
+                    <p class="featured-description">Gain competitive insights with our proprietary analytics platform featuring real-time stats, player tracking, and predictive modeling for informed sports viewing.</p>
+                </div>
+                <div class="featured-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="featured-icon"><i class="fas fa-crown"></i></div>
+                    <div class="featured-title">Exclusive Content</div>
+                    <p class="featured-description">Access premium content including athlete interviews, behind-the-scenes footage, and expert commentary unavailable anywhere else in the sports media landscape.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Countdown Timer -->
+        <section class="countdown-section">
+            <h2 class="countdown-heading" data-aos="fade-up">Upcoming Mega Event</h2>
+            <p class="countdown-subheading" data-aos="fade-up" data-aos-delay="100">FIFA World Cup Final 2026</p>
+            <div class="countdown-timer" id="countdown" data-aos="fade-up" data-aos-delay="200">
+                <div class="countdown-unit">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-unit">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-unit">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-unit">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonial Section -->
+        <section class="testimonial-section">
+            <h2 class="testimonial-heading" data-aos="fade-up">What Our Community Says</h2>
+            <p class="testimonial-subheading" data-aos="fade-up" data-aos-delay="100">Join millions of sports fans who trust SportsNation for their daily sports fix</p>
+            <div class="testimonial-slider" id="testimonialSlider">
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="John Doe" class="testimonial-avatar">
+                    <div class="testimonial-name">RAM</div>
+                    <div class="testimonial-role">Football Analyst</div>
+                    <p class="testimonial-text">SportsNation has completely transformed how I follow sports. The depth of analysis and real-time updates are unmatched. I rely on it daily for my work as a sports journalist.</p>
+                </div>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Jane Smith" class="testimonial-avatar">
+                    <div class="testimonial-name">SHANTI</div>
+                    <div class="testimonial-role">Basketball Coach</div>
+                    <p class="testimonial-text">As a professional coach, I need accurate stats and game analysis. SportsNation delivers this better than any platform I've used. The player tracking features are revolutionary.</p>
+                </div>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="400">
+                    <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Michael Lee" class="testimonial-avatar">
+                    <div class="testimonial-name">DEV</div>
+                    <div class="testimonial-role">Sports Enthusiast</div>
+                    <p class="testimonial-text">The premium content is worth every penny. I love the 4K streaming and multi-angle replays that let me experience games like never before. It's changed how I watch sports.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter-section">
+            <div class="newsletter-container" data-aos="fade-up">
+                <h2 class="newsletter-heading">Never Miss a Moment</h2>
+                <p class="newsletter-subheading">Subscribe to our premium newsletter for exclusive content, early access, and special offers</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                    <button type="submit" class="newsletter-btn">Subscribe Now</button>
+                </form>
+            </div>
+        </section>
     </main>
 
-    <script src="script.js"></script>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="#" class="footer-logo">
+                    <span>🏆</span>
+                    <span>SportsNation</span>
+                </a>
+                <p class="footer-description">The world's most comprehensive sports platform delivering premium content, live coverage, and in-depth analysis across all major sports worldwide.</p>
+                <div class="app-download">
+                    <button class="app-store">
+                        <span>Download on the</span>
+                        <span>App Store</span>
+                    </button>
+                    <button class="play-store">
+                        <span>Get it on</span>
+                        <span>Google Play</span>
+                    </button>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="links-column">
+                    <h4>Sports</h4>
+                    <a href="https://en.wikipedia.org/wiki/Football">Football</a>
+                    <a href="https://en.wikipedia.org/wiki/Basketball">Basketball</a>
+                    <a href="https://en.wikipedia.org/wiki/Tennis">Tennis</a>
+                    <a href="https://en.wikipedia.org/wiki/Cricket">Cricket</a>
+                    <a href="https://en.wikipedia.org/wiki/Golf">Golf</a>
+                    <a href="https://en.wikipedia.org/wiki/F1">F1</a>
+                </div>
+                <div class="links-column">
+                    <h4>Features</h4>
+                    <a href="https://en.wikipedia.org/wiki/Live_scores">Live Scores</a>
+                    <a href="https://en.wikipedia.org/wiki/News">News</a>
+                    <a href="https://en.wikipedia.org/wiki/Highlights">Highlights</a>
+                    <a href="https://en.wikipedia.org/wiki/Fantasy">Fantasy</a>
+                    <a href="https://en.wikipedia.org/wiki/Stats">Stats</a>
+                    <a href="https://en.wikipedia.org/wiki/Podcasts">Podcasts</a>
+                </div>
+
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="copyright">
+                © 2025 SportsNation. All rights reserved. SportsNation is not endorsed by or affiliated with any professional sports league.
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <iframe id="loginFrame" src="" frameborder="0"></iframe>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS (Animate On Scroll)
+        AOS.init({
+            duration: 800,
+            once: true,
+            easing: 'ease-in-out'
+        });
+
+        // Back to Top Button
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('active');
+            } else {
+                backToTopBtn.classList.remove('active');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Countdown Timer
+        const countdownDate = new Date("July 19, 2026 20:00:00").getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").textContent = days.toString().padStart(2, '0');
+            document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
+
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById("countdown").innerHTML = "<div class='countdown-ended'>Event Started!</div>";
+            }
+        }
+
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Modal Functions
+        function openLoginModal() {
+            const modal = document.getElementById("loginModal");
+            const frame = document.getElementById("loginFrame");
+            frame.src = "signup.html";
+            modal.style.display = "block";
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("loginModal");
+            const frame = document.getElementById("loginFrame");
+            modal.style.display = "none";
+            frame.src = "";
+            document.body.style.overflow = "auto";
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById("loginModal");
+            if (event.target == modal) closeModal();
+        };
+
+        // Search Functionality
+        const searchInput = document.querySelector('#searchInput');
+        const suggestionsContainer = document.querySelector('#suggestions');
+        const searchForm = document.querySelector('#searchForm');
+
+        const sportsData = {
+            football: {
+                description: "Association football is played between two teams of 11 players with a spherical ball.",
+                rules: "Score by getting the ball into the opponent's goal. No hands except for goalkeepers.",
+                events: ["FIFA World Cup", "UEFA Champions League", "Premier League"]
+            },
+            basketball: {
+                description: "Team sport where two teams shoot a ball through a hoop 10 feet above the ground.",
+                rules: "Score by shooting through the basket. Dribble to move with the ball.",
+                events: ["NBA", "FIBA World Cup", "EuroLeague"]
+            },
+            tennis: {
+                description: "Racket sport played individually or between two teams of two players each.",
+                rules: "Win points by hitting the ball over the net into opponent's court.",
+                events: ["Grand Slams", "ATP Tour", "WTA Tour"]
+            },
+            cricket: {
+                description: "Bat-and-ball game played between two teams of 11 players on a circular field.",
+                rules: "Score runs by hitting the ball and running between wickets.",
+                events: ["ICC World Cup", "IPL", "Ashes Series"]
+            },
+            swimming: {
+                description: "Individual or team racing sport requiring propulsion through water.",
+                rules: "Complete the set distance fastest using approved strokes.",
+                events: ["Olympics", "World Championships", "FINA World Cup"]
+            },
+        };
+
+        const sportIcons = {
+            football: "⚽",
+            basketball: "🏀",
+            tennis: "🎾",
+            cricket: "🏏",
+            swimming: "🏊",
+            golf: "⛳",
+            f1: "🏎️",
+            baseball: "⚾",
+            volleyball: "🏐",
+            boxing: "🥊",
+            athletics: "🏃",
+            cycling: "🚴"
+        };
+
+        async function fetchSuggestions(query) {
+            // Simulate API call with local data
+            return new Promise((resolve) => {
+                const results = Object.keys(sportsData)
+                    .filter(sport => sport.toLowerCase().includes(query.toLowerCase()))
+                    .map(sport => sport.charAt(0).toUpperCase() + sport.slice(1));
+                
+                // Add some popular teams/players
+                if (query.toLowerCase().includes('foot')) {
+                    results.push('Manchester United', 'Real Madrid', 'Lionel Messi');
+                }
+                if (query.toLowerCase().includes('basket')) {
+                    results.push('Los Angeles Lakers', 'Chicago Bulls', 'LeBron James');
+                }
+                
+                setTimeout(() => resolve(results), 300);
+            });
+        }
+
+        function displaySuggestions(suggestions) {
+            suggestionsContainer.innerHTML = '';
+            if (suggestions.length === 0) {
+                suggestionsContainer.classList.remove('active');
+                return;
+            }
+            
+            suggestions.forEach(suggestion => {
+                const icon = sportIcons[suggestion.toLowerCase()] || '🔍';
+                const div = document.createElement('div');
+                div.classList.add('suggestion-item');
+                div.innerHTML = `
+                    <span class="suggestion-icon">${icon}</span>
+                    <span>${suggestion}</span>
+                `;
+                div.addEventListener('click', () => {
+                    searchInput.value = suggestion;
+                    suggestionsContainer.innerHTML = '';
+                    suggestionsContainer.classList.remove('active');
+                    // In a real app, you would redirect to the search results page
+                });
+                suggestionsContainer.appendChild(div);
+            });
+            suggestionsContainer.classList.add('active');
+        }
+
+        function handleSearch(event) {
+            event.preventDefault();
+            const query = searchInput.value.trim();
+            if (query) {
+                // In a real app, you would redirect to search results
+                console.log('Searching for:', query);
+                searchInput.value = '';
+                suggestionsContainer.innerHTML = '';
+                suggestionsContainer.classList.remove('active');
+            }
+        }
+
+        searchInput.addEventListener('input', async () => {
+            const query = searchInput.value.trim();
+            if (query.length < 2) {
+                suggestionsContainer.innerHTML = '';
+                suggestionsContainer.classList.remove('active');
+                return;
+            }
+            const suggestions = await fetchSuggestions(query);
+            displaySuggestions(suggestions);
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!searchForm.contains(event.target)) {
+                suggestionsContainer.innerHTML = '';
+                suggestionsContainer.classList.remove('active');
+            }
+        });
+
+        // Setup News Ticker
+        function setupNewsTicker() {
+            const ticker = document.querySelector('.news-ticker');
+            const tickerContainer = document.querySelector('.news-ticker-container');
+            const items = ticker.querySelectorAll('.news-box');
+            items.forEach(item => ticker.appendChild(item.cloneNode(true)));
+            tickerContainer.addEventListener('mouseenter', () => ticker.style.animationPlayState = 'paused');
+            tickerContainer.addEventListener('mouseleave', () => ticker.style.animationPlayState = 'running');
+            const itemCount = items.length;
+            const duration = itemCount * 9;
+            ticker.style.animationDuration = `${duration}s`;
+        }
+        setupNewsTicker();
+    </script>
 </body>
 </html>

@@ -1,0 +1,1659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outdoor Sports Hub | Premium Sports Experience</title>
+    <meta name="description" content="Discover the ultimate premium destination for outdoor sports with in-depth coverage, stunning visuals, and exclusive content.">
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=home,sports_cricket,sports_soccer,pool,sports_athletics,sports_kabaddi,directions_bike">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Premium Color Palette */
+            --primary: #00A3FF;
+            --primary-dark: #007ACC;
+            --secondary: #6B46C1;
+            --accent: #FF6B00;
+            --bg-dark: #0B132B;
+            --card-bg: rgba(27, 37, 64, 0.85);
+            --card-hover: rgba(35, 47, 82, 0.9);
+            --text-primary: #F5F6F5;
+            --text-secondary: #A0B1C5;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+            --border-radius: 20px;
+            --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --gradient-primary: linear-gradient(135deg, #00A3FF 0%, #4FD1C5 100%);
+            --gradient-secondary: linear-gradient(135deg, #6B46C1 0%, #9F7AEA 100%);
+            --gradient-accent: linear-gradient(135deg, #FF6B00 0%, #FFB300 100%);
+            --gradient-button: linear-gradient(135deg, #00A3FF, #6B46C1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.8;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* Particle Background */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: transparent;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        p {
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 1.8rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: var(--transition);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .explore-btn { background: var(--gradient-primary); color: #fff; }
+        .detail-btn { background: var(--gradient-secondary); color: #fff; }
+        .history-btn { background: var(--gradient-accent); color: #fff; }
+        .players-btn { background: linear-gradient(135deg, #2e7d32 0%, #43a047 100%); color: #fff; }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, rgba(11, 19, 43, 0.95) 0%, rgba(27, 37, 64, 0.95) 100%);
+            padding: 1.5rem 2rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(0, 163, 255, 0.5);
+            animation: glow 4s infinite alternate ease-in-out;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 8px rgba(0, 163, 255, 0.4); }
+            to { text-shadow: 0 0 20px rgba(0, 163, 255, 0.8); }
+        }
+
+        .home-icon {
+            font-size: 2rem;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .home-icon:hover {
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        nav {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Cards Container */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 2rem;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .sport-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+            position: relative;
+            transform: perspective(1000px);
+        }
+
+        .sport-card:hover {
+            transform: perspective(1000px) translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 50px rgba(0, 163, 255, 0.2);
+            border-color: var(--primary);
+            background: var(--card-hover);
+        }
+
+        .sport-icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 2.2rem;
+            color: var(--accent);
+            opacity: 0.8;
+            transition: var(--transition);
+            z-index: 2;
+        }
+
+        .sport-card:hover .sport-icon {
+            opacity: 1;
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .card-image {
+            height: 260px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .card-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
+            transition: var(--transition);
+        }
+
+        .sport-card:hover .card-image::after {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.2));
+        }
+
+        .sport-card:hover .card-image {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 2rem;
+            position: relative;
+        }
+
+        .card-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #bbdefb;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-description {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        /* Sport-Specific Styles */
+        .cricket .card-image { background-image: url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e'); }
+        .football .card-image { background-image: url('https://images.unsplash.com/photo-1574629810360-7efbbe195018'); }
+        .swimming .card-image { background-image: url('https://images.unsplash.com/photo-1530549387789-4c1017266635'); }
+        .hurdle .card-image { background-image: url('https://img.freepik.com/free-vector/track-field-concept-illustration_114360-1025.jpg?t=st=1744826203~exp=1744829803~hmac=1e8ffd6b8cd4365d75062429821a36f5fe20a48f27cadbce216636e419ca00a2&w=900'); }
+        .kabaddi .card-image { background-image: url('https://wallpapers.com/images/high/kabaddi-sport-raid-zzypjfkyfps1vctn.webp'); }
+        .cycling .card-image { background-image: url('https://images.unsplash.com/photo-1517649763962-0c623066013b'); }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            overflow-y: auto;
+            backdrop-filter: blur(12px);
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #0B132B, #1B2540);
+            color: var(--text-primary);
+            margin: 5% auto;
+            padding: 3rem;
+            width: 90%;
+            max-width: 1000px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            position: relative;
+            animation: slideUp 0.4s ease-out;
+            border: 1px solid var(--border-color);
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: var(--transition);
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .close-btn:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .modal-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .modal-section h2 {
+            font-size: 2.5rem;
+            color: #bbdefb;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .modal-section h3 {
+            font-size: 1.8rem;
+            color: #bbdefb;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .modal-section ul {
+            padding-left: 1.5rem;
+        }
+
+        .modal-section li {
+            margin-bottom: 0.8rem;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        .highlight {
+            background: rgba(0, 163, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            border-left: 5px solid var(--primary);
+            backdrop-filter: blur(8px);
+        }
+
+        .court-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin-top: 1rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .court-image:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .court-image-caption {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-top: 0.8rem;
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, rgba(11, 19, 43, 0.95) 0%, rgba(27, 37, 64, 0.95) 100%);
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            position: relative;
+        }
+
+        .footer-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-family: 'Playfair Display', serif;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            max-width: 300px;
+            line-height: 1.7;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .links-column {
+            min-width: 150px;
+        }
+
+        .links-column h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .links-column a {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.6rem;
+            transition: var(--transition);
+        }
+
+        .links-column a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.8rem;
+            max-width: 400px;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .newsletter-btn {
+            padding: 0.8rem 1.5rem;
+            background: var(--gradient-primary);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            justify-content: center;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+            background: rgba(0, 163, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .cards-container {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+                padding: 1.5rem;
+            }
+
+            .card-image {
+                height: 240px;
+            }
+
+            .card-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            header {
+                padding: 1.2rem 1.5rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .nav-link {
+                font-size: 0.9rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 2rem;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --border-radius: 16px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .home-icon {
+                font-size: 1.8rem;
+            }
+
+            .card-image {
+                height: 220px;
+            }
+
+            .card-title {
+                font-size: 1.8rem;
+            }
+
+            .card-description {
+                font-size: 0.95rem;
+            }
+
+            .btn-container {
+                flex-direction: column;
+                gap: 0.6rem;
+            }
+
+            .btn {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .modal-section h2 {
+                font-size: 2rem;
+            }
+
+            .modal-section h3 {
+                font-size: 1.5rem;
+            }
+
+            .modal-section li {
+                font-size: 1rem;
+            }
+
+            .footer-logo {
+                font-size: 1.6rem;
+            }
+
+            .newsletter-form {
+                max-width: 100%;
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 576px) {
+            :root {
+                --border-radius: 12px;
+            }
+
+            header {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .home-icon {
+                font-size: 1.6rem;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .nav-link {
+                font-size: 0.85rem;
+            }
+
+            .cards-container {
+                padding: 1rem;
+            }
+
+            .card-image {
+                height: 200px;
+            }
+
+            .card-content {
+                padding: 1.5rem;
+            }
+
+            .card-title {
+                font-size: 1.6rem;
+            }
+
+            .card-description {
+                font-size: 0.9rem;
+            }
+
+            .modal-content {
+                padding: 1.5rem;
+            }
+
+            .modal-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .modal-section h3 {
+                font-size: 1.3rem;
+            }
+
+            .highlight {
+                padding: 1rem;
+            }
+
+            .court-image-caption {
+                font-size: 0.85rem;
+            }
+
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+                bottom: 1.5rem;
+                right: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <h1>Outdoor Sports Hub</h1>
+            <nav>
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="indoor.html" class="nav-link">Indoor Sports</a>
+                <a href="https://edition.cnn.com/sport" target="_blank" class="nav-link">Latest News</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Cards Container -->
+        <div class="cards-container" data-aos="fade-up">
+            <!-- Cricket Card -->
+            <div class="sport-card cricket" data-aos="fade-up">
+                
+                <div class="card-image"></div>
+                <div class="card-content">
+                    <h2 class="card-title">Cricket</h2>
+                    <p class="card-description">Experience the thrill of cricket, a bat-and-ball game played on a 22-yard pitch, captivating millions worldwide.</p>
+                    <div class="btn-container">
+                        <button class="btn explore-btn" onclick="openModal('cricket', 'basic')">Basic Info</button>
+                        <button class="btn detail-btn" onclick="openModal('cricket', 'details')">Details</button>
+                        <button class="btn history-btn" onclick="openModal('cricket', 'history')">History</button>
+                        <button class="btn players-btn" onclick="openModal('cricket', 'players')">Famous Players</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Football Card -->
+            <div class="sport-card football" data-aos="fade-up" data-aos-delay="100">
+                
+                <div class="card-image"></div>
+                <div class="card-content">
+                    <h2 class="card-title">Football</h2>
+                    <p class="card-description">Dive into the world's most popular sport, where passion and skill collide on the pitch.</p>
+                    <div class="btn-container">
+                        <button class="btn explore-btn" onclick="openModal('football', 'basic')">Basic Info</button>
+                        <button class="btn detail-btn" onclick="openModal('football', 'details')">Details</button>
+                        <button class="btn history-btn" onclick="openModal('football', 'history')">History</button>
+                        <button class="btn players-btn" onclick="openModal('football', 'players')">Famous Players</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Swimming Card -->
+            <div class="sport-card swimming" data-aos="fade-up" data-aos-delay="200">
+               
+                <div class="card-image"></div>
+                <div class="card-content">
+                    <h2 class="card-title">Swimming</h2>
+                    <p class="card-description">Explore the elegance of swimming, a sport of speed and grace in the water.</p>
+                    <div class="btn-container">
+                        <button class="btn explore-btn" onclick="openModal('swimming', 'basic')">Basic Info</button>
+                        <button class="btn detail-btn" onclick="openModal('swimming', 'details')">Details</button>
+                        <button class="btn history-btn" onclick="openModal('swimming', 'history')">History</button>
+                        <button class="btn players-btn" onclick="openModal('swimming', 'players')">Famous Swimmers</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hurdle Race Card -->
+            <div class="sport-card hurdle" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-image"></div>
+                <div class="card-content">
+                    <h2 class="card-title">Hurdle Race</h2>
+                    <p class="card-description">Feel the adrenaline of hurdling, where speed meets precision over obstacles.</p>
+                    <div class="btn-container">
+                        <button class="btn explore-btn" onclick="openModal('hurdle', 'basic')">Basic Info</button>
+                        <button class="btn detail-btn" onclick="openModal('hurdle', 'details')">Details</button>
+                        <button class="btn history-btn" onclick="openModal('hurdle', 'history')">History</button>
+                        <button class="btn players-btn" onclick="openModal('hurdle', 'players')">Famous Hurdlers</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kabaddi Card -->
+            <div class="sport-card kabaddi" data-aos="fade-up" data-aos-delay="400">
+                <div class="card-image"></div>
+                <div class="card-content">
+                    <h2 class="card-title">Kabaddi</h2>
+                    <p class="card-description">Discover kabaddi, a dynamic contact sport blending strategy and strength.</p>
+                    <div class="btn-container">
+                        <button class="btn explore-btn" onclick="openModal('kabaddi', 'basic')">Basic Info</button>
+                        <button class="btn detail-btn" onclick="openModal('kabaddi', 'details')">Details</button>
+                        <button class="btn history-btn" onclick="openModal('kabaddi', 'history')">History</button>
+                        <button class="btn players-btn" onclick="openModal('kabaddi', 'players')">Famous Players</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cycling Card -->
+            <div class="sport-card cycling" data-aos="fade-up" data-aos-delay="500">
+
+                <div class="card-image"></div>
+                <div class="card-content">
+                    <h2 class="card-title">Cycling</h2>
+                    <p class="card-description">Ride into the world of cycling, a sport of endurance and speed across diverse terrains.</p>
+                    <div class="btn-container">
+                        <button class="btn explore-btn" onclick="openModal('cycling', 'basic')">Basic Info</button>
+                        <button class="btn detail-btn" onclick="openModal('cycling', 'details')">Details</button>
+                        <button class="btn history-btn" onclick="openModal('cycling', 'history')">History</button>
+                        <button class="btn players-btn" onclick="openModal('cycling', 'players')">Famous Cyclists</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Structure -->
+        <div id="sportModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()" tabindex="0" aria-label="Close Modal">×</span>
+                <div id="modalContent"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2 class="footer-logo">Outdoor Sports Hub</h2>
+                <p class="footer-description">Your premium destination for outdoor sports, offering exclusive content, detailed insights, and a community for enthusiasts.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.twitter.com" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="links-column">
+                    <h4>Explore</h4>
+                    <a href="index.html">Home</a>
+                    <a href="indoor.html">Indoor Sports</a>
+                    <a href="https://edition.cnn.com/sport">Latest News</a>
+                </div>
+                <div class="links-column">
+                    <h4>Resources</h4>
+                    <a href="#about">About Us</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#privacy">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="footer-newsletter">
+                <h4>Stay Updated</h4>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+                    <button type="submit" class="newsletter-btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <p class="copyright">© 2025 Outdoor Sports Hub. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Particle.js Configuration
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: ['#00A3FF', '#6B46C1', '#FF6B00'] },
+                shape: { type: 'circle' },
+                opacity: { value: 0.3, random: true },
+                size: { value: 3, random: true },
+                line_linked: { enable: false },
+                move: {
+                    enable: true,
+                    speed: 0.5,
+                    direction: 'none',
+                    random: true,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'repulse' },
+                    onclick: { enable: true, mode: 'push' },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+
+        // AOS Initialization
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Modal Data
+        const sportData = {
+            cricket: {
+                basic: {
+                    title: "Cricket",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Basic Information</h3>
+                            <p>Cricket is a bat-and-ball game played between two teams of 11 players on a field at the center of which is a 22-yard (20-meter) pitch with a wicket at each end.</p>
+                            <div class="highlight">
+                                <p><strong>Did you know?</strong> A cricket match can last anywhere from a few hours (T20) to five days (Test match).</p>
+                            </div>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Key Rules</h3>
+                            <ul>
+                                <li>Two teams of 11 players each</li>
+                                <li>Matches consist of innings where teams bat and field</li>
+                                <li>Batsmen score runs by hitting the ball and running between wickets</li>
+                                <li>Bowlers try to get batsmen out through various methods</li>
+                                <li>Test matches have unlimited overs, while limited-overs games have 20-50 overs per side</li>
+                            </ul>
+                        </div>
+                    `
+                },
+                details: {
+                    title: "Cricket Details",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Dimensions</h3>
+                            <ul>
+                                <li><strong>Field:</strong> Oval shape, typically 150-170m diameter</li>
+                                <li><strong>Pitch:</strong> 20.12m (22 yards) long × 3.05m wide</li>
+                                <li><strong>Crease:</strong> 1.22m wide (bowling), 1.83m long (popping)</li>
+                                <li><strong>Boundary:</strong> Usually 60-90m from center depending on ground size</li>
+                                <li><strong>Wickets:</strong> 71.1cm tall, 22.9cm wide</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Equipment Specifications</h3>
+                            <ul>
+                                <li><strong>Bat:</strong> Max 96.5cm long, 10.8cm wide, usually made of willow</li>
+                                <li><strong>Ball:</strong> 155.9-163g, circumference 22.4-22.9cm (men's)</li>
+                                <li><strong>Protective Gear:</strong> Helmet, gloves, leg pads, abdominal guard</li>
+                                <li><strong>Uniform:</strong> White for Test matches, colored for limited-overs</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Field Image</h3>
+                            <img src="https://imgs.search.brave.com/PNGWQO4RJEIMmfBknYO8QMLzL2BYpzHjhPV7qcJdzvU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9ud3Nj/ZG4uY29tL21lZGlh/L3d5c2l3eWcvQ3Jp/Y2tldC1GaWVsZC1E/aW1lbnNpb25zMi5q/cGc" class="court-image">
+                            <p class="court-image-caption">Diagram of a standard cricket field showing the pitch, creases, and boundary.</p>
+                        </div>
+                    `
+                },
+                history: {
+                    title: "Cricket History",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Origins and Development</h3>
+                            <p>Cricket originated in south-east England in the 16th century. By the end of the 18th century, it had developed into the national sport of England.</p>
+                            <ul>
+                                <li><strong>1744:</strong> First known laws of cricket written</li>
+                                <li><strong>1844:</strong> First international match (USA vs Canada)</li>
+                                <li><strong>1877:</strong> First Test match (England vs Australia)</li>
+                                <li><strong>1971:</strong> First One Day International</li>
+                                <li><strong>2003:</strong> First T20 international</li>
+                            </ul>
+                            <div class="highlight">
+                                <p><strong>Fun Fact:</strong> The longest cricket match lasted 14 days (England vs South Africa, 1939) and ended in a draw because the English team had to catch their boat home!</p>
+                            </div>
+                        </div>
+                    `
+                },
+                players: {
+                    title: "Famous Cricket Players",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Legendary Cricketers</h3>
+                            <ul>
+                                <li><strong>Sir Donald Bradman</strong> (Australia) - Considered the greatest batsman of all time with Test average of 99.94</li>
+                                <li><strong>Sachin Tendulkar</strong> (India) - Holds record for most international runs (34,357) and centuries (100)</li>
+                                <li><strong>Shane Warne</strong> (Australia) - Legendary leg-spinner with 708 Test wickets</li>
+                                <li><strong>Viv Richards</strong> (West Indies) - Dominant batsman of 1970s-80s</li>
+                                <li><strong>Wasim Akram</strong> (Pakistan) - One of the greatest fast bowlers</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Current Stars</h3>
+                            <ul>
+                                <li><strong>Virat Kohli</strong> (India) - Modern batting great with 70+ international centuries</li>
+                                <li><strong>Steve Smith</strong> (Australia) - Unorthodox but highly effective batsman</li>
+                                <li><strong>Kane Williamson</strong> (New Zealand) - Elegant batsman and captain</li>
+                                <li><strong>Jasprit Bumrah</strong> (India) - Leading fast bowler with unique action</li>
+                                <li><strong>Rashid Khan</strong> (Afghanistan) - World-class leg-spinner</li>
+                            </ul>
+                        </div>
+                    `
+                }
+            },
+            football: {
+                basic: {
+                    title: "Football",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Basic Information</h3>
+                            <p>Football (or soccer) is the world's most popular sport, played between two teams of 11 players who try to score by getting a ball into the opposing team's goal.</p>
+                            <div class="highlight">
+                                <p><strong>Did you know?</strong> The FIFA World Cup is the most watched sporting event in the world, with over 3.5 billion viewers for the 2018 tournament.</p>
+                            </div>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Key Rules</h3>
+                            <ul>
+                                <li>Matches consist of two 45-minute halves</li>
+                                <li>Only goalkeepers can handle the ball within their penalty area</li>
+                                <li>Offside rule prevents goal-hanging</li>
+                                <li>Fouls result in free kicks or penalty kicks</li>
+                                <li>Yellow and red cards for disciplinary actions</li>
+                            </ul>
+                        </div>
+                    `
+                },
+                details: {
+                    title: "Football Details",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Dimensions</h3>
+                            <ul>
+                                <li><strong>Field:</strong> 100-110m × 64-75m (international)</li>
+                                <li><strong>Goal:</strong> 7.32m × 2.44m</li>
+                                <li><strong>Penalty Area:</strong> 16.5m × 40.3m</li>
+                                <li><strong>Center Circle:</strong> 9.15m radius</li>
+                                <li><strong>Ball:</strong> Circumference 68-70cm, weight 410-450g</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Positions</h3>
+                            <ul>
+                                <li><strong>Goalkeeper:</strong> Only player allowed to handle the ball</li>
+                                <li><strong>Defenders:</strong> Center-backs, full-backs, wing-backs</li>
+                                <li><strong>Midfielders:</strong> Defensive, central, attacking, wingers</li>
+                                <li><strong>Forwards:</strong> Strikers, center forwards, second strikers</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Pitch Image</h3>
+                            <img src="https://imgs.search.brave.com/RlT2Y3k8Lf2F29vblg1u-xte0WAijUSmLxSLkZDuRIY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Y29uY2VwdGRyYXcu/Y29tL0hvdy1Uby1H/dWlkZS9waWN0dXJl/L1Nwb3J0LVNvY2Nl/ci1Gb290YmFsbC1G/aWVsZC1EaW1lbnNp/b25zLnBuZw" class="court-image">
+                            <p class="court-image-caption">Diagram of a standard football pitch showing key areas like the penalty area and goal.</p>
+                        </div>
+                    `
+                },
+                history: {
+                    title: "Football History",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Origins and Development</h3>
+                            <p>Modern football originated in England in the 19th century, though similar games date back centuries earlier in various cultures.</p>
+                            <ul>
+                                <li><strong>1863:</strong> Football Association formed in England, first standardized rules</li>
+                                <li><strong>1904:</strong> FIFA (Fédération Internationale de Football Association) founded</li>
+                                <li><strong>1930:</strong> First FIFA World Cup held in Uruguay</li>
+                                <li><strong>1954:</strong> UEFA founded, European competitions begin</li>
+                                <li><strong>1992:</strong> Premier League formed in England</li>
+                            </ul>
+                            <div class="highlight">
+                                <p><strong>Fun Fact:</strong> The fastest goal in football history was scored in 2.8 seconds by Nawaf Al Abed in a Saudi Arabian league match in 2009.</p>
+                            </div>
+                        </div>
+                    `
+                },
+                players: {
+                    title: "Famous Football Players",
+                    content: `
+                        <div class="modal-section">
+                            <h3>All-Time Greats</h3>
+                            <ul>
+                                <li><strong>Pelé</strong> (Brazil) - The only player to win 3 World Cups (1958, 1962, 1970)</li>
+                                <li><strong>Diego Maradona</strong> (Argentina) - Legendary 1986 World Cup performance</li>
+                                <li><strong>Johan Cruyff</strong> (Netherlands) - Pioneer of "Total Football"</li>
+                                <li><strong>Franz Beckenbauer</strong> (Germany) - Revolutionary sweeper</li>
+                                <li><strong>Zinedine Zidane</strong> (France) - Masterful midfielder</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Modern Stars</h3>
+                            <ul>
+                                <li><strong>Lionel Messi</strong> (Argentina) - Multiple Ballon d'Or winner</li>
+                                <li><strong>Cristiano Ronaldo</strong> (Portugal) - Record international goalscorer</li>
+                                <li><strong>Kylian Mbappé</strong> (France) - Young superstar</li>
+                                <li><strong>Kevin De Bruyne</strong> (Belgium) - World-class midfielder</li>
+                                <li><strong>Virgil van Dijk</strong> (Netherlands) - Dominant defender</li>
+                                <li><strong>Sunil Chetri</strong> (India) - India's all-time leading goal scorer</li>
+                            </ul>
+                        </div>
+                    `
+                }
+            },
+            swimming: {
+                basic: {
+                    title: "Swimming",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Basic Information</h3>
+                            <p>Swimming is an individual or team sport that involves moving through water using the arms and legs. Competitive swimming features four main strokes: freestyle, backstroke, breaststroke, and butterfly.</p>
+                            <div class="highlight">
+                                <p><strong>Did you know?</strong> Olympic swimming pools are 50 meters long with 8 lanes, and the water is maintained at 25-28°C (77-82°F).</p>
+                            </div>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Key Rules</h3>
+                            <ul>
+                                <li>Swimmers must stay in their assigned lanes</li>
+                                <li>Each stroke has specific technique requirements</li>
+                                <li>False starts lead to disqualification</li>
+                                <li>In relays, swimmers must wait until the previous teammate touches the wall</li>
+                                <li>Turns must be executed according to stroke-specific rules</li>
+                            </ul>
+                        </div>
+                    `
+                },
+                details: {
+                    title: "Swimming Details",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Pool Specifications</h3>
+                            <ul>
+                                <li><strong>Olympic Pool:</strong> 50m long × 25m wide × 2m deep</li>
+                                <li><strong>Lanes:</strong> 2.5m wide with lane ropes</li>
+                                <li><strong>Starting Blocks:</strong> 0.5m-0.75m above water surface</li>
+                                <li><strong>Water Temperature:</strong> 25-28°C (77-82°F)</li>
+                                <li><strong>Turn Indicators:</strong> Flags 5m from each end for backstroke</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Event Distances</h3>
+                            <ul>
+                                <li><strong>Freestyle:</strong> 50m, 100m, 200m, 400m, 800m, 1500m</li>
+                                <li><strong>Backstroke:</strong> 50m, 100m, 200m</li>
+                                <li><strong>Breaststroke:</strong> 50m, 100m, 200m</li>
+                                <li><strong>Butterfly:</strong> 50m, 100m, 200m</li>
+                                <li><strong>Individual Medley:</strong> 100m (short course), 200m, 400m</li>
+                                <li><strong>Relays:</strong> 4×100m freestyle, 4×200m freestyle, 4×100m medley</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Pool Image</h3>
+                            <img src="https://imgs.search.brave.com/tZ4nJGXSjji1CBIQIbsggX8e2_Vm1blrVHVmp9KaIyQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cHJvZC53ZWJzaXRl/LWZpbGVzLmNvbS81/YjQ0ZWRlZmNhMzIx/YTFlMmQwYzJhYTYv/NWQwZWNlZTg2YzAw/NDY3YTcyYzZlNmY0/X0RpbWVuc2lvbnMt/R3VpZGUtTGF5b3V0/cy1Td2ltbWluZy1Q/b29scy1PdmFsLVN3/aW1taW5nLVBvb2xz/LVBlcnNvbi1JY29u/LnN2Zw" class="court-image">
+                            <p class="court-image-caption">Diagram of a standard 50m Olympic swimming pool with lanes and starting blocks.</p>
+                        </div>
+                    `
+                },
+                history: {
+                    title: "Swimming History",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Origins and Development</h3>
+                            <p>Swimming has been practiced since prehistoric times, with the first organized competitions dating back to the early 19th century.</p>
+                            <ul>
+                                <li><strong>1837:</strong> First modern swimming competitions in London</li>
+                                <li><strong>1896:</strong> Swimming included in first modern Olympics (men only)</li>
+                                <li><strong>1908:</strong> Fédération Internationale de Natation (FINA) founded</li>
+                                <li><strong>1912:</strong> Women's swimming added to Olympics</li>
+                                <li><strong>1956:</strong> Introduction of flip turn in competitions</li>
+                                <li><strong>1973:</strong> First World Aquatics Championships</li>
+                            </ul>
+                            <div class="highlight">
+                                <p><strong>Fun Fact:</strong> The oldest swimming stroke is breaststroke, dating back to the Stone Age as evidenced by cave paintings in Egypt.</p>
+                            </div>
+                        </div>
+                    `
+                },
+                players: {
+                    title: "Famous Swimmers",
+                    content: `
+                        <div class="modal-section">
+                            <h3>All-Time Greats</h3>
+                            <ul>
+                                <li><strong>Michael Phelps</strong> (USA) - Most Olympic medals (28) and gold medals (23) of any athlete</li>
+                                <li><strong>Mark Spitz</strong> (USA) - Won 7 gold medals at 1972 Olympics</li>
+                                <li><strong>Katie Ledecky</strong> (USA) - Holds world records in 400m, 800m, and 1500m freestyle</li>
+                                <li><strong>Ian Thorpe</strong> (Australia) - "Thorpedo" won 5 Olympic golds</li>
+                                <li><strong>Kristóf Milák</strong> (Hungary) - Current 200m butterfly world record holder</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Current Stars</h3>
+                            <ul>
+                                <li><strong>Caeleb Dressel</strong> (USA) - Dominant sprinter with multiple world records</li>
+                                <li><strong>Adam Peaty</strong> (UK) - Revolutionized breaststroke technique</li>
+                                <li><strong>Sarah Sjöström</strong> (Sweden) - World record holder in 50m and 100m freestyle</li>
+                                <li><strong>Ariarne Titmus</strong> (Australia) - Olympic champion in 200m and 400m freestyle</li>
+                                <li><strong>Zhang Yufei</strong> (China) - Olympic champion in 200m butterfly</li>
+                            </ul>
+                        </div>
+                    `
+                }
+            },
+            hurdle: {
+                basic: {
+                    title: "Hurdle Race",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Basic Information</h3>
+                            <p>Hurdling is a track and field event where runners jump over barriers at speed. The most common distances are 110m (men) and 100m (women) hurdles, with 400m hurdles being the longer version.</p>
+                            <div class="highlight">
+                                <p><strong>Did you know?</strong> The world record for men's 110m hurdles is 12.80 seconds by Aries Merritt (2012), and for women's 100m hurdles is 12.12 seconds by Tobi Amusan (2022).</p>
+                            </div>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Key Rules</h3>
+                            <ul>
+                                <li>Runners must stay in their lanes throughout the race</li>
+                                <li>Knocking over hurdles is permitted but slows the runner</li>
+                                <li>Deliberately knocking down hurdles is a disqualification</li>
+                                <li>Leading leg must go over the hurdle first</li>
+                                <li>False starts result in disqualification</li>
+                            </ul>
+                        </div>
+                    `
+                },
+                details: {
+                    title: "Hurdle Race Details",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Race Specifications</h3>
+                            <ul>
+                                <li><strong>Men's 110m Hurdles:</strong>
+                                    <ul>
+                                        <li>Height: 1.067m (42 inches)</li>
+                                        <li>Number: 10 hurdles</li>
+                                        <li>Distance to first hurdle: 13.72m</li>
+                                        <li>Between hurdles: 9.14m</li>
+                                        <li>From last hurdle to finish: 14.02m</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Women's 100m Hurdles:</strong>
+                                    <ul>
+                                        <li>Height: 0.838m (33 inches)</li>
+                                        <li>Number: 10 hurdles</li>
+                                        <li>Distance to first hurdle: 13m</li>
+                                        <li>Between hurdles: 8.5m</li>
+                                        <li>From last hurdle to finish: 10.5m</li>
+                                    </ul>
+                                </li>
+                                <li><strong>400m Hurdles (both genders):</strong>
+                                    <ul>
+                                        <li>Men's height: 0.914m (36 inches)</li>
+                                        <li>Women's height: 0.762m (30 inches)</li>
+                                        <li>Number: 10 hurdles</li>
+                                        <li>Distance to first hurdle: 45m</li>
+                                        <li>Between hurdles: 35m</li>
+                                        <li>From last hurdle to finish: 40m</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Track Image</h3>
+                            <img src="https://imgs.search.brave.com/WKF86rrTSc6xa9FLkiC5D9Zqv5ETLA5FWdEDJaZ1Yj8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9ud3Nj/ZG4uY29tL21lZGlh/L3d5c2l3eWcvM2tm/L3J1bm5pbmcvSHVy/ZGxlSGVpZ2hDb21w/YXJpc29uSGlnaGVz/dC5qcGc" class="court-image">
+                            <p class="court-image-caption">Diagram of a standard 400m athletics track with hurdle positions for 110m/100m races.</p>
+                        </div>
+                    `
+                },
+                history: {
+                    title: "Hurdle Race History",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Origins and Development</h3>
+                            <p>Hurdling evolved from early foot races where runners had to jump over natural obstacles like fallen trees or streams.</p>
+                            <ul>
+                                <li><strong>1830s:</strong> First organized hurdle races at Oxford and Cambridge</li>
+                                <li><strong>1864:</strong> First hurdle race in modern Olympics format</li>
+                                <li><strong>1896:</strong> 110m hurdles included in first modern Olympics</li>
+                                <li><strong>1926:</strong> Women's hurdles introduced (80m initially)</li>
+                                <li><strong>1969:</strong> Women's distance changed to 100m hurdles</li>
+                                <li><strong>1976:</strong> Women's 400m hurdles added to Olympics</li>
+                            </ul>
+                            <div class="highlight">
+                                <p><strong>Fun Fact:</strong> The original hurdles were heavy wooden barriers that could injure runners. Modern lightweight hurdles that tip over when hit were introduced in 1935.</p>
+                            </div>
+                        </div>
+                    `
+                },
+                players: {
+                    title: "Famous Hurdlers",
+                    content: `
+                        <div class="modal-section">
+                            <h3>All-Time Greats</h3>
+                            <ul>
+                                <li><strong>Colin Jackson</strong> (UK) - Former 110m hurdles world record holder (12.91s)</li>
+                                <li><strong>Edwin Moses</strong> (USA) - Dominated 400m hurdles for a decade, 122-race win streak</li>
+                                <li><strong>Harrison Dillard</strong> (USA) - Only man to win Olympic gold in both sprints and hurdles</li>
+                                <li><strong>Yordanka Donkova</strong> (Bulgaria) - Former 100m hurdles world record holder</li>
+                                <li><strong>Sally Pearson</strong> (Australia) - Olympic and World Champion in 100m hurdles</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Current Stars</h3>
+                            <ul>
+                                <li><strong>Grant Holloway</strong> (USA) - Current 110m hurdles world leader</li>
+                                <li><strong>Tobi Amusan</strong> (Nigeria) - 100m hurdles world record holder (12.12s)</li>
+                                <li><strong>Karsten Warholm</strong> (Norway) - 400m hurdles world record holder (45.94s)</li>
+                                <li><strong>Sydney McLaughlin</strong> (USA) - Women's 400m hurdles world record holder (50.68s)</li>
+                                <li><strong>Devynne Charlton</strong> (Bahamas) - 60m hurdles specialist</li>
+                            </ul>
+                        </div>
+                    `
+                }
+            },
+            kabaddi: {
+                basic: {
+                    title: "Kabaddi",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Basic Information</h3>
+                            <p>Kabaddi is a contact team sport originating from ancient India that combines wrestling and tag, requiring both offensive and defensive skills.</p>
+                            <div class="highlight">
+                                <p><strong>Did you know?</strong> Kabaddi is the national sport of Bangladesh and the state game of several Indian states including Tamil Nadu, Maharashtra, and Punjab.</p>
+                            </div>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Key Rules</h3>
+                            <ul>
+                                <li>Two teams of seven players each</li>
+                                <li>Raider enters opponent's half chanting "kabaddi" without taking breath</li>
+                                <li>Defenders try to stop raider from returning to their side</li>
+                                <li>Points scored by tagging opponents or stopping raiders</li>
+                                <li>Matches consist of two 20-minute halves</li>
+                            </ul>
+                        </div>
+                    `
+                },
+                details: {
+                    title: "Kabaddi Details",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Dimensions</h3>
+                            <ul>
+                                <li><strong>Court:</strong> 13m × 10m (men), 12m × 8m (women)</li>
+                                <li><strong>Mid Line:</strong> Divides court in half</li>
+                                <li><strong>Bonus Line:</strong> 1.75m from end line (extra point opportunity)</li>
+                                <li><strong>Lobby Area:</strong> 1m wide along sides (out of bounds)</li>
+                                <li><strong>Baulk Line:</strong> 3.75m from mid line (defensive boundary)</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Positions</h3>
+                            <ul>
+                                <li><strong>Raider:</strong> Offensive player who enters opponent's court</li>
+                                <li><strong>Stopper:</strong> Defensive player who tries to tackle raider</li>
+                                <li><strong>Cover:</strong> Supporting defensive players</li>
+                                <li><strong>All-Rounder:</strong> Players skilled in both raiding and defending</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Court Image</h3>
+                            <img src="https://imgs.search.brave.com/nbbR7-wrmrjJ1qnjfTKro412gUZMoQ2cKrpYyZmQNfk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9sYXlh/a2FyY2hpdGVjdC5j/b20vd3AtY29udGVu/dC91cGxvYWRzLzIw/MjQvMDEvS2FiYWRk/aS1Db3VydC1EaW1l/bnNpb25zLTEwMjR4/NzgwLnBuZw" class="court-image">
+                            <p class="court-image-caption">Diagram of a standard kabaddi court showing the mid line, baulk lines, and bonus line.</p>
+                        </div>
+                    `
+                },
+                history: {
+                    title: "Kabaddi History",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Origins and Development</h3>
+                            <p>Kabaddi has ancient roots in India, with references in Hindu mythology and evidence of being played for thousands of years.</p>
+                            <ul>
+                                <li><strong>Ancient Times:</strong> Mentioned in Mahabharata epic</li>
+                                <li><strong>1936:</strong> Demonstration sport at Berlin Olympics</li>
+                                <li><strong>1950:</strong> All India Kabaddi Federation formed</li>
+                                <li><strong>1990:</strong> Asian Kabaddi Federation founded</li>
+                                <li><strong>2014:</strong> Pro Kabaddi League launched in India</li>
+                            </ul>
+                            <div class="highlight">
+                                <p><strong>Fun Fact:</strong> The longest kabaddi match lasted 183 minutes (3 hours 3 minutes) between Punjab and Bengal in the 2012 National Kabaddi Championship.</p>
+                            </div>
+                        </div>
+                    `
+                },
+                players: {
+                    title: "Famous Kabaddi Players",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Legendary Players</h3>
+                            <ul>
+                                <li><strong>Anup Kumar</strong> (India) - Called the "Captain Cool" of kabaddi</li>
+                                <li><strong>Rakesh Kumar</strong> (India) - Considered one of greatest raiders</li>
+                                <li><strong>Manjeet Chhillar</strong> (India) - Dominant all-rounder</li>
+                                <li><strong>Jang Kun Lee</strong> (South Korea) - Popular foreign player in PKL</li>
+                                <li><strong>Pardeep Narwal</strong> (India) - Record holder for most raid points in PKL</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Current Stars</h3>
+                            <ul>
+                                <li><strong>Pawan Sehrawat</strong> (India) - High-flying raider</li>
+                                <li><strong>Naveen Kumar</strong> (India) - Young raiding sensation</li>
+                                <li><strong>Fazel Atrachali</strong> (Iran) - Top defender</li>
+                                <li><strong>Deepak Niwas Hooda</strong> (India) - Skilled all-rounder</li>
+                                <li><strong>Siddharth Desai</strong> (India) - Powerful raider</li>
+                            </ul>
+                        </div>
+                    `
+                }
+            },
+            cycling: {
+                basic: {
+                    title: "Cycling",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Basic Information</h3>
+                            <p>Cycling encompasses various competitive sports involving bicycles, including road racing, track cycling, mountain biking, and BMX.</p>
+                            <div class="highlight">
+                                <p><strong>Did you know?</strong> The Tour de France, the most prestigious cycling race, covers approximately 3,500 km (2,200 miles) over 21 days.</p>
+                            </div>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Key Rules</h3>
+                            <ul>
+                                <li>Riders must complete course under own power</li>
+                                <li>Drafting (riding closely behind others) allowed in most races</li>
+                                <li>Time trials are individual races against the clock</li>
+                                <li>Equipment must meet UCI (Union Cycliste Internationale) regulations</li>
+                                <li>Helmets mandatory in all competitions</li>
+                            </ul>
+                        </div>
+                    `
+                },
+                details: {
+                    title: "Cycling Details",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Dimensions and Specifications</h3>
+                            <ul>
+                                <li><strong>Road Bike:</strong> Minimum weight 6.8kg, max length 185cm</li>
+                                <li><strong>Time Trial Bike:</strong> Aerodynamic design with special handlebars</li>
+                                <li><strong>Track Bike:</strong> Fixed gear, no brakes</li>
+                                <li><strong>Mountain Bike:</strong> Sturdy frame with suspension</li>
+                                <li><strong>Velodrome:</strong> 250m oval track with steeply banked turns</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Race Types</h3>
+                            <ul>
+                                <li><strong>Road Race:</strong> Mass start, first across finish line wins</li>
+                                <li><strong>Time Trial:</strong> Individual race against the clock</li>
+                                <li><strong>Stage Race:</strong> Multi-day event (e.g., Tour de France)</li>
+                                <li><strong>Track Cycling:</strong> Various events on velodrome</li>
+                                <li><strong>Cyclocross:</strong> Off-road course with obstacles</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Velodrome Image</h3>
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Forest_city_velodrome.jpg/1280px-Forest_city_velodrome.jpg" class="court-image">
+                            <p class="court-image-caption">Diagram of a standard 250m velodrome used for track cycling events.</p>
+                        </div>
+                    `
+                },
+                history: {
+                    title: "Cycling History",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Origins and Development</h3>
+                            <p>Competitive cycling began in the late 19th century shortly after the invention of the modern bicycle.</p>
+                            <ul>
+                                <li><strong>1868:</strong> First recorded bicycle race (Paris, 1,200m)</li>
+                                <li><strong>1903:</strong> First Tour de France</li>
+                                <li><strong>1893:</strong> First World Championships</li>
+                                <li><strong>1896:</strong> Cycling included in first modern Olympics</li>
+                                <li><strong>2008:</strong> BMX added to Olympics</li>
+                            </ul>
+                            <div class="highlight">
+                                <p><strong>Fun Fact:</strong> The fastest speed on a bicycle is 296.009 km/h (183.932 mph), achieved by Denise Mueller-Korenek in 2018 behind a pace car.</p>
+                            </div>
+                        </div>
+                    `
+                },
+                players: {
+                    title: "Famous Cyclists",
+                    content: `
+                        <div class="modal-section">
+                            <h3>All-Time Greats</h3>
+                            <ul>
+                                <li><strong>Eddy Merckx</strong> (Belgium) - "The Cannibal," won all major races</li>
+                                <li><strong>Bernard Hinault</strong> (France) - 5-time Tour de France winner</li>
+                                <li><strong>Miguel Indurain</strong> (Spain) - Won 5 consecutive Tours</li>
+                                <li><strong>Lance Armstrong</strong> (USA) - 7 Tour wins (later stripped)</li>
+                                <li><strong>Chris Hoy</strong> (UK) - Most successful Olympic track cyclist</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Current Stars</h3>
+                            <ul>
+                                <li><strong>Tadej Pogačar</strong> (Slovenia) - Young Tour de France winner</li>
+                                <li><strong>Jonas Vingegaard</strong> (Denmark) - Tour de France champion</li>
+                                <li><strong>Mathieu van der Poel</strong> (Netherlands) - Versatile champion</li>
+                                <li><strong>Wout van Aert</strong> (Belgium) - All-round talent</li>
+                                <li><strong>Annemiek van Vleuten</strong> (Netherlands) - Dominant female rider</li>
+                            </ul>
+                        </div>
+                    `
+                }
+            }
+        };
+
+        function openModal(sport, section) {
+            const modal = document.getElementById('sportModal');
+            const content = document.getElementById('modalContent');
+            const data = sportData[sport][section];
+            content.innerHTML = `
+                <h2>${data.title}</h2>
+                ${data.content}
+            `;
+            modal.style.display = 'block';
+            document.addEventListener('keydown', handleEscKey);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('sportModal');
+            modal.style.display = 'none';
+            document.removeEventListener('keydown', handleEscKey);
+        }
+
+        function handleEscKey(event) {
+            if (event.key === 'Escape') closeModal();
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('sportModal');
+            if (event.target == modal) closeModal();
+        }
+    </script>
+</body>
+</html>

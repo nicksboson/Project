@@ -1,0 +1,1599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indoor Sports Hub | Premium Indoor Sports Experience</title>
+    <meta name="description" content="Discover a premium destination for indoor sports with elegant design, detailed insights, and exclusive content.">
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=home,sports_badminton,sports_tennis,sports_gymnastics,sports_volleyball,sports_martial_arts,castle">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Original Color Palette */
+            --primary: #00c896;
+            --primary-dark: #00B38A;
+            --secondary: #6c63ff;
+            --accent: #ffca28;
+            --bg-dark: #0a0a0a;
+            --card-bg: rgba(20, 20, 20, 0.95);
+            --card-hover: rgba(30, 30, 30, 0.95);
+            --text-primary: #ffffff;
+            --text-secondary: #b0bec5;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            --border-radius: 20px;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --gradient-primary: linear-gradient(135deg, #00c896 0%, #00a8ff 100%);
+            --gradient-secondary: linear-gradient(135deg, #6c63ff 0%, #ff6b6b 100%);
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: radial-gradient(circle at top right, #1a1a1a 0%, #0a0a0a 100%);
+            color: var(--text-primary);
+            line-height: 1.8;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        p {
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 1.8rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #fff;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: var(--transition);
+            z-index: 0;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .explore-btn { background: var(--gradient-primary); box-shadow: 0 4px 15px rgba(0, 200, 150, 0.3); }
+        .detail-btn { background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%); box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3); }
+        .history-btn { background: var(--gradient-secondary); box-shadow: 0 4px 15px rgba(106, 27, 154, 0.3); }
+        .players-btn { background: linear-gradient(135deg, #ef6c00 0%, #e65100 100%); box-shadow: 0 4px 15px rgba(239, 108, 0, 0.3); }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(20, 20, 20, 0.95) 100%);
+            padding: 1.5rem 2rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(0, 200, 150, 0.5);
+            animation: glow 4s infinite alternate ease-in-out;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 8px rgba(0, 200, 150, 0.4); }
+            to { text-shadow: 0 0 20px rgba(0, 200, 150, 0.8); }
+        }
+
+        .home-icon {
+            font-size: 2rem;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .home-icon:hover {
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        nav {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Cards Container */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .sport-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+            position: relative;
+            transform: perspective(1000px);
+        }
+
+        .sport-card:hover {
+            transform: perspective(1000px) translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 200, 150, 0.2);
+            border-color: var(--primary-dark);
+            background: var(--card-hover);
+        }
+
+        .sport-icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 2.2rem;
+            color: var(--accent);
+            opacity: 0.9;
+            transition: var(--transition);
+            z-index: 2;
+        }
+
+        .sport-card:hover .sport-icon {
+            opacity: 1;
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .card-image {
+            height: 260px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .card-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+            transition: var(--transition);
+        }
+
+        .sport-card:hover .card-image::after {
+            background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.2));
+        }
+
+        .sport-card:hover .card-image {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 2rem;
+            position: relative;
+        }
+
+        .card-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-description {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        /* Sport-Specific Styles */
+        .badminton .card-image { background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Olympics_2012_Mixed_Doubles_Final.jpg/1280px-Olympics_2012_Mixed_Doubles_Final.jpg'); }
+        .table-tennis .card-image { background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Mondial_Ping_-_Men%27s_Singles_-_Round_4_-_Kenta_Matsudaira-Vladimir_Samsonov_-_57.jpg/512px-Mondial_Ping_-_Men%27s_Singles_-_Round_4_-_Kenta_Matsudaira-Vladimir_Samsonov_-_57.jpg'); }
+        .chess .card-image { background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/ChessSet.jpg/512px-ChessSet.jpg'); }
+        .boxing .card-image { background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Boxing_Tournament_in_Aid_of_King_George%27s_Fund_For_Sailors_at_the_Royal_Naval_Air_Station%2C_Henstridge%2C_Somerset%2C_July_1945_A29806.jpg/512px-Boxing_Tournament_in_Aid_of_King_George%27s_Fund_For_Sailors_at_the_Royal_Naval_Air_Station%2C_Henstridge%2C_Somerset%2C_July_1945_A29806.jpg'); }
+        .gymnastics .card-image { background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/ESTADOS_UNIDOS_LEVAM_OURO_NA_GIN%C3%81STICA_FEMININA_POR_EQUIPES_DOS_JOGOS_OL%C3%8DMPICOS_RIO_2016_%2828849586476%29.jpg/512px-ESTADOS_UNIDOS_LEVAM_OURO_NA_GIN%C3%81STICA_FEMININA_POR_EQUIPES_DOS_JOGOS_OL%C3%8DMPICOS_RIO_2016_%2828849586476%29.jpg'); }
+        .volleyball .card-image { background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Brasil_vence_a_Fran%C3%A7a_no_v%C3%B4lei_masculino_1037987-15.08.2016_ffz-6369.jpg/512px-Brasil_vence_a_Fran%C3%A7a_no_v%C3%B4lei_masculino_1037987-15.08.2016_ffz-6369.jpg'); }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            overflow-y: auto;
+            backdrop-filter: blur(12px);
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            color: var(--text-primary);
+            margin: 5% auto;
+            padding: 3rem;
+            width: 90%;
+            max-width: 1000px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            position: relative;
+            animation: slideUp 0.4s ease-out;
+            border: 1px solid var(--border-color);
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: var(--transition);
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .close-btn:hover {
+            color: var(--primary);
+            transform: rotate(90deg);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .modal-section {
+            margin-bottom: 2.5rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .modal-section h2 {
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .modal-section h3 {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .modal-section ul {
+            padding-left: 1.5rem;
+        }
+
+        .modal-section li {
+            margin-bottom: 0.8rem;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+
+        .highlight {
+            background: rgba(0, 200, 150, 0.1);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            border-left: 5px solid var(--primary);
+            backdrop-filter: blur(8px);
+        }
+
+        .court-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            margin-top: 1rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+        }
+
+        .court-image:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .court-image-caption {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-top: 0.8rem;
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.95), rgba(20, 20, 20, 0.95));
+            padding: 4rem 2rem;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            position: relative;
+        }
+
+        .footer-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-family: 'Playfair Display', serif;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            max-width: 300px;
+            line-height: 1.7;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .links-column {
+            min-width: 150px;
+        }
+
+        .links-column h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .links-column a {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 0.6rem;
+            transition: var(--transition);
+        }
+
+        .links-column a:hover {
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 0.8rem;
+            max-width: 400px;
+            flex-wrap: wrap;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .newsletter-btn {
+            padding: 0.8rem 1.5rem;
+            background: var(--gradient-primary);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            justify-content: center;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+            background: rgba(0, 200, 150, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .cards-container {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+                padding: 1.5rem;
+            }
+
+            .card-image {
+                height: 240px;
+            }
+
+            .card-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            header {
+                padding: 1.2rem 1.5rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .nav-link {
+                font-size: 0.9rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 2rem;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer-links {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --border-radius: 16px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .home-icon {
+                font-size: 1.8rem;
+            }
+
+            .card-image {
+                height: 220px;
+            }
+
+            .card-title {
+                font-size: 1.8rem;
+            }
+
+            .card-description {
+                font-size: 1rem;
+            }
+
+            .btn-container {
+                flex-direction: column;
+                gap: 0.6rem;
+            }
+
+            .btn {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .modal-section h2 {
+                font-size: 2rem;
+            }
+
+            .modal-section h3 {
+                font-size: 1.5rem;
+            }
+
+            .modal-section li {
+                font-size: 1rem;
+            }
+
+            .footer-logo {
+                font-size: 1.8rem;
+            }
+
+            .newsletter-form {
+                max-width: 100%;
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 576px) {
+            :root {
+                --border-radius: 12px;
+            }
+
+            header {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .home-icon {
+                font-size: 1.6rem;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .nav-link {
+                font-size: 0.85rem;
+            }
+
+            .cards-container {
+                padding: 1rem;
+            }
+
+            .card-image {
+                height: 200px;
+            }
+
+            .card-content {
+                padding: 1.5rem;
+            }
+
+            .card-title {
+                font-size: 1.6rem;
+            }
+
+            .card-description {
+                font-size: 0.9rem;
+            }
+
+            .modal-content {
+                padding: 1.5rem;
+            }
+
+            .modal-section h2 {
+                font-size: 1.8rem;
+            }
+
+            .modal-section h3 {
+                font-size: 1.3rem;
+            }
+
+            .highlight {
+                padding: 1rem;
+            }
+
+            .court-image-caption {
+                font-size: 0.85rem;
+            }
+
+            .back-to-top {
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+                bottom: 1.5rem;
+                right: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <h1>Indoor Sports Hub</h1>
+            <nav>
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="outdoor.html" class="nav-link">Outdoor Sports</a>
+                <a href="https://edition.cnn.com/sport" target="_blank" class="nav-link">Latest News</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Cards Container -->
+        <div class="cards-container" data-aos="fade-up">
+            <!-- Badminton Card -->
+            <div class="sport-card badminton" data-aos="fade-up">
+                
+                <div class="card-image"></div>
+                <div class="card-content">
+                    <h2 class="card-title">Badminton</h2>
+                    <p class="card-description">A racquet sport played with a shuttlecock, showcasing agility and precision.</p>
+                    <div class="btn-container">
+                        <button class="btn explore-btn" onclick="openModal('badminton', 'basic')">Basic Info</button>
+                        <button class="btn detail-btn" onclick="openModal('badminton', 'details')">Details</button>
+                        <button class="btn history-btn" onclick="openModal('badminton', 'history')">History</button>
+                        <button class="btn players-btn" onclick="openModal('badminton', 'players')">Famous Players</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table Tennis Card -->
+            <div class="sport-card table-tennis" data-aos="fade-up" data-aos-delay="100">
+           
+                <div class="card-image"></div>
+                <div class="card-content">
+                    <h2 class="card-title">Table Tennis</h2>
+                    <p class="card-description">A fast-paced game of skill and reflexes on a compact table.</p>
+                    <div class="btn-container">
+                        <button class="btn explore-btn" onclick="openModal('table-tennis', 'basic')">Basic Info</button>
+                        <button class="btn detail-btn" onclick="openModal('table-tennis', 'details')">Details</button>
+                        <button class="btn history-btn" onclick="openModal('table-tennis', 'history')">History</button>
+                        <button class="btn players-btn" onclick="openModal('table-tennis', 'players')">Famous Players</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chess Card -->
+            <div class="sport-card chess" data-aos="fade-up" data-aos-delay="200">
+        
+                <div class="card-image"></div>
+                <div class="card-content">
+                    <h2 class="card-title">Chess</h2>
+                    <p class="card-description">A strategic battle of wits on an 8x8 board.</p>
+                    <div class="btn-container">
+                        <button class="btn explore-btn" onclick="openModal('chess', 'basic')">Basic Info</button>
+                        <button class="btn detail-btn" onclick="openModal('chess', 'details')">Details</button>
+                        <button class="btn history-btn" onclick="openModal('chess', 'history')">History</button>
+                        <button class="btn players-btn" onclick="openModal('chess', 'players')">Famous Players</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Boxing Card -->
+            <div class="sport-card boxing" data-aos="fade-up" data-aos-delay="300">
+               \
+                <div class="card-image"></div>
+                <div class="card-content">
+                    <h2 class="card-title">Boxing</h2>
+                    <p class="card-description">A test of strength and strategy in the ring.</p>
+                    <div class="btn-container">
+                        <button class="btn explore-btn" onclick="openModal('boxing', 'basic')">Basic Info</button>
+                        <button class="btn detail-btn" onclick="openModal('boxing', 'details')">Details</button>
+                        <button class="btn history-btn" onclick="openModal('boxing', 'history')">History</button>
+                        <button class="btn players-btn" onclick="openModal('boxing', 'players')">Famous Boxers</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gymnastics Card -->
+            <div class="sport-card gymnastics" data-aos="fade-up" data-aos-delay="400">
+          
+                <div class="card-image"></div>
+                <div class="card-content">
+                    <h2 class="card-title">Gymnastics</h2>
+                    <p class="card-description">A showcase of strength, flexibility, and grace on apparatus.</p>
+                    <div class="btn-container">
+                        <button class="btn explore-btn" onclick="openModal('gymnastics', 'basic')">Basic Info</button>
+                        <button class="btn detail-btn" onclick="openModal('gymnastics', 'details')">Details</button>
+                        <button class="btn history-btn" onclick="openModal('gymnastics', 'history')">History</button>
+                        <button class="btn players-btn" onclick="openModal('gymnastics', 'players')">Famous Gymnasts</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Volleyball Card -->
+            <div class="sport-card volleyball" data-aos="fade-up" data-aos-delay="500">
+                <div class="card-image"></div>
+                <div class="card-content">
+                    <h2 class="card-title">Volleyball</h2>
+                    <p class="card-description">A team sport of coordination and power over the net.</p>
+                    <div class="btn-container">
+                        <button class="btn explore-btn" onclick="openModal('volleyball', 'basic')">Basic Info</button>
+                        <button class="btn detail-btn" onclick="openModal('volleyball', 'details')">Details</button>
+                        <button class="btn history-btn" onclick="openModal('volleyball', 'history')">History</button>
+                        <button class="btn players-btn" onclick="openModal('volleyball', 'players')">Famous Players</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Structure -->
+        <div id="sportModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()" tabindex="0" aria-label="Close Modal">×</span>
+                <div id="modalContent"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2 class="footer-logo">Indoor Sports Hub</h2>
+                <p class="footer-description">Your premium destination for indoor sports, offering elegant design, detailed insights, and a community for enthusiasts.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.twitter.com" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="links-column">
+                    <h4>Explore</h4>
+                    <a href="index.html">Home</a>
+                    <a href="outdoor.html">Outdoor Sports</a>
+                    <a href="https://edition.cnn.com/sport">Latest News</a>
+                </div>
+                <div class="links-column">
+                    <h4>Resources</h4>
+                    <a href="#about">About Us</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#privacy">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="footer-newsletter">
+                <h4>Stay Updated</h4>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+                    <button type="submit" class="newsletter-btn">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <p class="copyright">© 2025 Indoor Sports Hub. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // AOS Initialization
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Modal Data
+        const sportData = {
+            badminton: {
+                basic: {
+                    title: "Badminton",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Basic Information</h3>
+                            <p>Badminton is a racquet sport played with a shuttlecock, where players or pairs hit it over a net to score points by landing it in the opponent's court.</p>
+                            <div class="highlight">
+                                <p><strong>Did you know?</strong> The fastest recorded smash in badminton reached 565 km/h (351 mph) by Satwiksairaj Rankireddy in 2023.</p>
+                            </div>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Key Rules</h3>
+                            <ul>
+                                <li>Played as singles or doubles</li>
+                                <li>Matches are best of three games to 21 points</li>
+                                <li>Players score by landing the shuttlecock in opponent's court</li>
+                                <li>Serve must be hit below waist height</li>
+                                <li>Shuttlecock must not touch the net or land out of bounds</li>
+                            </ul>
+                        </div>
+                    `
+                },
+                details: {
+                    title: "Badminton Details",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Dimensions</h3>
+                            <ul>
+                                <li><strong>Court:</strong> 13.4m × 6.1m (doubles), 13.4m × 5.18m (singles)</li>
+                                <li><strong>Net:</strong> 1.55m high at center</li>
+                                <li><strong>Service Line:</strong> 1.98m from net (short service line)</li>
+                                <li><strong>Shuttlecock:</strong> 4.74-5.50g, 16 feathers</li>
+                                <li><strong>Racquet:</strong> Max length 68cm, max width 23cm</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Equipment Specifications</h3>
+                            <ul>
+                                <li><strong>Racquet:</strong> Lightweight, typically carbon fiber or aluminum</li>
+                                <li><strong>Shuttlecock:</strong> Goose feather or synthetic skirt</li>
+                                <li><strong>Shoes:</strong> Non-marking soles for grip</li>
+                                <li><strong>Attire:</strong> Lightweight, breathable clothing</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Court Image</h3>
+                            <img src="https://imgs.search.brave.com/1neR2OCs80TbcxMyTAMjwQnvIqMqUX6Ov64MpEMDcfE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cHJvZC53ZWJzaXRl/LWZpbGVzLmNvbS81/YjQ0ZWRlZmNhMzIx/YTFlMmQwYzJhYTYv/NWJmNDMyNjY5MTIz/YjlkMDEyMDllOTE1/X0RpbWVuc2lvbnMt/R3VpZGUtU3BvcnRz/LUJhZG1pbnRvbi1D/b3VydC1EaW1lbnNp/b25zLnN2Zw" class="court-image">
+                            <p class="court-image-caption">Diagram of a standard badminton court (doubles and singles).</p>
+                        </div>
+                    `
+                },
+                history: {
+                    title: "Badminton History",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Origins and Development</h3>
+                            <p>Badminton evolved from a game called "battledore and shuttlecock" in ancient civilizations, with modern rules formalized in the 19th century.</p>
+                            <ul>
+                                <li><strong>1873:</strong> Modern badminton formalized in England</li>
+                                <li><strong>1893:</strong> Badminton Association of England formed</li>
+                                <li><strong>1934:</strong> International Badminton Federation (now BWF) founded</li>
+                                <li><strong>1992:</strong> Badminton introduced to Olympics</li>
+                                <li><strong>2006:</strong> Rally point scoring system adopted</li>
+                            </ul>
+                            <div class="highlight">
+                                <p><strong>Fun Fact:</strong> The game was named after Badminton House in Gloucestershire, where it was played in the 19th century.</p>
+                            </div>
+                        </div>
+                    `
+                },
+                players: {
+                    title: "Famous Badminton Players",
+                    content: `
+                        <div class="modal-section">
+                            <h3>All-Time Greats</h3>
+                            <ul>
+                                <li><strong>Lin Dan</strong> (China) - Two-time Olympic champion</li>
+                                <li><strong>Taufik Hidayat</strong> (Indonesia) - 2004 Olympic gold medalist</li>
+                                <li><strong>Gao Ling</strong> (China) - Four Olympic medals in mixed doubles</li>
+                                <li><strong>Rudy Hartono</strong> (Indonesia) - Eight-time All England champion</li>
+                                <li><strong>Prakash Padukone</strong> (India) - 1980 All England champion</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Current Stars</h3>
+                            <ul>
+                                <li><strong>Viktor Axelsen</strong> (Denmark) - 2020 Olympic champion</li>
+                                <li><strong>Tai Tzu Ying</strong> (Taiwan) - World No. 1 women's singles</li>
+                                <li><strong>Kento Momota</strong> (Japan) - Two-time world champion</li>
+                                <li><strong>An Se Young</strong> (South Korea) - Rising women's singles star</li>
+                                <li><strong>Chen Yu Fei</strong> (China) - 2020 Olympic women's singles champion</li>
+                            </ul>
+                        </div>
+                    `
+                }
+            },
+            'table-tennis': {
+                basic: {
+                    title: "Table Tennis",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Basic Information</h3>
+                            <p>Table Tennis, also known as ping-pong, is a fast-paced indoor sport where players hit a lightweight ball across a table using paddles.</p>
+                            <div class="highlight">
+                                <p><strong>Did you know?</strong> The ball can travel at speeds up to 112 km/h (70 mph) in professional matches.</p>
+                            </div>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Key Rules</h3>
+                            <ul>
+                                <li>Played as singles or doubles</li>
+                                <li>Matches are best of five or seven games to 11 points</li>
+                                <li>Serve must be tossed 16cm and hit behind the table</li>
+                                <li>Ball must bounce once on each side of the net</li>
+                                <li>Players alternate serves every two points</li>
+                            </ul>
+                        </div>
+                    `
+                },
+                details: {
+                    title: "Table Tennis Details",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Dimensions</h3>
+                            <ul>
+                                <li><strong>Table:</strong> 2.74m × 1.525m × 0.76m high</li>
+                                <li><strong>Net:</strong> 15.25cm high, extends 15.25cm beyond table</li>
+                                <li><strong>Ball:</strong> 40mm diameter, 2.7g</li>
+                                <li><strong>Paddle:</strong> No size restriction, typically 15cm long</li>
+                                <li><strong>Playing Area:</strong> Minimum 14m × 7m recommended</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Equipment Specifications</h3>
+                            <ul>
+                                <li><strong>Paddle:</strong> Wooden blade with rubber surfaces</li>
+                                <li><strong>Ball:</strong> Celluloid or plastic, white or orange</li>
+                                <li><strong>Table:</strong> Smooth, low-friction surface</li>
+                                <li><strong>Attire:</strong> Non-reflective clothing, non-marking shoes</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Table Image</h3>
+                            <img src="https://imgs.search.brave.com/RnWZ26YohpHjaN0NateKkbFhygZXipRC2PIWih2bWQ0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cHJvZC53ZWJzaXRl/LWZpbGVzLmNvbS81/YjQ0ZWRlZmNhMzIx/YTFlMmQwYzJhYTYv/NWViODk4ZjM2MzFh/MWVjM2I4MWI4MDMw/X0RpbWVuc2lvbnMt/R3VpZGUtU3BvcnRz/LVRlbm5pcy1Db3Vy/dC1EaW1lbnNpb25z/LnN2Zw" class="court-image">
+                            <p class="court-image-caption">Diagram of a standard table tennis table.</p>
+                        </div>
+                    `
+                },
+                history: {
+                    title: "Table Tennis History",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Origins and Development</h3>
+                            <p>Table Tennis originated in Victorian England as an after-dinner parlor game, evolving into a competitive sport in the 20th century.</p>
+                            <ul>
+                                <li><strong>1880s:</strong> Game emerges in England</li>
+                                <li><strong>1926:</strong> International Table Tennis Federation (ITTF) founded</li>
+                                <li><strong>1926:</strong> First World Championships held</li>
+                                <li><strong>1988:</strong> Table Tennis introduced to Olympics</li>
+                                <li><strong>2000:</strong> Ball size increased to 40mm</li>
+                            </ul>
+                            <div class="highlight">
+                                <p><strong>Fun Fact:</strong> Early table tennis balls were made of cork or rubber, often causing unpredictable bounces.</p>
+                            </div>
+                        </div>
+                    `
+                },
+                players: {
+                    title: "Famous Table Tennis Players",
+                    content: `
+                        <div class="modal-section">
+                            <h3>All-Time Greats</h3>
+                            <ul>
+                                <li><strong>Jan-Ove Waldner</strong> (Sweden) - 1992 Olympic champion</li>
+                                <li><strong>Deng Yaping</strong> (China) - Four Olympic gold medals</li>
+                                <li><strong>Ma Lin</strong> (China) - 2008 Olympic singles champion</li>
+                                <li><strong>Viktor Barna</strong> (Hungary) - 22 World Championship medals</li>
+                                <li><strong>Zhuang Zedong</strong> (China) - Three-time world champion</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Current Stars</h3>
+                            <ul>
+                                <li><strong>Ma Long</strong> (China) - Two-time Olympic champion</li>
+                                <li><strong>Fan Zhendong</strong> (China) - World No. 1 men's singles</li>
+                                <li><strong>Chen Meng</strong> (China) - 2020 Olympic women's singles champion</li>
+                                <li><strong>Sun Yingsha</strong> (China) - Young prodigy</li>
+                                <li><strong>Tomokazu Harimoto</strong> (Japan) - Rising star</li>
+                            </ul>
+                        </div>
+                    `
+                }
+            },
+            chess: {
+                basic: {
+                    title: "Chess",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Basic Information</h3>
+                            <p>Chess is a two-player strategy board game played on an 8x8 grid, where players move pieces to checkmate the opponent's king.</p>
+                            <div class="highlight">
+                                <p><strong>Did you know?</strong> A chess game can theoretically have 10^120 possible positions, making it incredibly complex.</p>
+                            </div>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Key Rules</h3>
+                            <ul>
+                                <li>Each player starts with 16 pieces: 1 king, 1 queen, 2 rooks, 2 knights, 2 bishops, 8 pawns</li>
+                                <li>Objective is to checkmate the opponent's king</li>
+                                <li>Each piece moves uniquely (e.g., bishops diagonally, rooks horizontally/vertically)</li>
+                                <li>Special moves include castling, en passant, and pawn promotion</li>
+                                <li>Games can end in checkmate, stalemate, or draw</li>
+                            </ul>
+                        </div>
+                    `
+                },
+                details: {
+                    title: "Chess Details",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Board and Pieces</h3>
+                            <ul>
+                                <li><strong>Board:</strong> 8x8 grid, alternating light and dark squares</li>
+                                <li><strong>King:</strong> Moves one square in any direction</li>
+                                <li><strong>Queen:</strong> Moves any distance horizontally, vertically, or diagonally</li>
+                                <li><strong>Rook:</strong> Moves any distance horizontally or vertically</li>
+                                <li><strong>Bishop:</strong> Moves any distance diagonally</li>
+                                <li><strong>Knight:</strong> Moves in an L-shape (two squares one way, one perpendicular)</li>
+                                <li><strong>Pawn:</strong> Moves forward one square, captures diagonally</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Time Controls</h3>
+                            <ul>
+                                <li><strong>Classical:</strong> 90 minutes or more per player</li>
+                                <li><strong>Rapid:</strong> 10-60 minutes per player</li>
+                                <li><strong>Blitz:</strong> 3-10 minutes per player</li>
+                                <li><strong>Bullet:</strong> Less than 3 minutes per player</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Board Image</h3>
+                            <img src="https://imgs.search.brave.com/KXmVHazIIwt9FeCEBPUm2M9HwwrOEhP-4B5ZGIUbXE4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9ibG9n/LmhvdXNlb2ZzdGF1/bnRvbi5jb20vd3At/Y29udGVudC91cGxv/YWRzLzIwMjQvMDIv/dG9wLWRvd24tdmll/dy1vZi1hLWNoZXNz/LWJvYXJkLmpwZw" class="court-image">
+                            <p class="court-image-caption">Standard 8x8 chess board with alternating squares.</p>
+                        </div>
+                    `
+                },
+                history: {
+                    title: "Chess History",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Origins and Development</h3>
+                            <p>Chess originated in India around the 6th century as "chaturanga," spreading to Persia, the Arab world, and Europe.</p>
+                            <ul>
+                                <li><strong>6th Century:</strong> Chaturanga developed in India</li>
+                                <li><strong>1475:</strong> Modern chess rules begin to form in Europe</li>
+                                <li><strong>1886:</strong> First official World Chess Championship</li>
+                                <li><strong>1924:</strong> Fédération Internationale des Échecs (FIDE) founded</li>
+                                <li><strong>1997:</strong> Deep Blue defeats Garry Kasparov</li>
+                            </ul>
+                            <div class="highlight">
+                                <p><strong>Fun Fact:</strong> The longest chess world championship match lasted 124 moves in 1984 between Karpov and Kasparov.</p>
+                            </div>
+                        </div>
+                    `
+                },
+                players: {
+                    title: "Famous Chess Players",
+                    content: `
+                        <div class="modal-section">
+                            <h3>All-Time Greats</h3>
+                            <ul>
+                                <li><strong>Garry Kasparov</strong> (Russia) - World champion 1985-2000</li>
+                                <li><strong>Bobby Fischer</strong> (USA) - 1972 world champion</li>
+                                <li><strong>Anatoly Karpov</strong> (Russia) - World champion 1975-1985</li>
+                                <li><strong>Jose Raul Capablanca</strong> (Cuba) - Known for endgame mastery</li>
+                                <li><strong>Emanuel Lasker</strong> (Germany) - Longest-reigning world champion</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Current Stars</h3>
+                            <ul>
+                                <li><strong>Magnus Carlsen</strong> (Norway) - World champion since 2013</li>
+                                <li><strong>Fabiano Caruana</strong> (USA) - World No. 2</li>
+                                <li><strong>Ding Liren</strong> (China) - 2023 world champion</li>
+                                <li><strong>Hikaru Nakamura</strong> (USA) - Blitz and online chess star</li>
+                                <li><strong>Judit Polgár</strong> (Hungary) - Strongest female player ever</li>
+                            </ul>
+                        </div>
+                    `
+                }
+            },
+            boxing: {
+                basic: {
+                    title: "Boxing",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Basic Information</h3>
+                            <p>Boxing is a combat sport where two fighters throw punches in a ring, aiming to outscore or knock out their opponent.</p>
+                            <div class="highlight">
+                                <p><strong>Did you know?</strong> The fastest knockout in professional boxing history was 4 seconds by Al Brown in 1922.</p>
+                            </div>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Key Rules</h3>
+                            <ul>
+                                <li>Fights typically last 4-12 rounds of 3 minutes each</li>
+                                <li>Points awarded for clean punches to head or torso</li>
+                                <li>Knockout ends the fight if a fighter cannot continue</li>
+                                <li>No hitting below the belt, holding, or biting</li>
+                                <li>Referee can stop fight for safety</li>
+                            </ul>
+                        </div>
+                    `
+                },
+                details: {
+                    title: "Boxing Details",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Dimensions</h3>
+                            <ul>
+                                <li><strong>Ring:</strong> 16-20ft square (inside ropes)</li>
+                                <li><strong>Ropes:</strong> 3-4 ropes, 1m high</li>
+                                <li><strong>Gloves:</strong> 8-10oz for professionals</li>
+                                <li><strong>Mouthguard:</strong> Mandatory for safety</li>
+                                <li><strong>Round Duration:</strong> 3 minutes (men), 2 minutes (women in amateurs)</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Weight Classes</h3>
+                            <ul>
+                                <li><strong>Heavyweight:</strong> Over 200 lbs</li>
+                                <li><strong>Middleweight:</strong> 154-160 lbs</li>
+                                <li><strong>Lightweight:</strong> 126-135 lbs</li>
+                                <li><strong>Flyweight:</strong> 108-112 lbs</li>
+                                <li><strong>Minimumweight:</strong> Up to 105 lbs</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Ring Image</h3>
+                            <img src="https://imgs.search.brave.com/mmYGbNxjc29aqVPWM13RY87xzfzNIdDZcMyg1ZutDig/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2MyL2Yw/L2ZiL2MyZjBmYjJh/NTQzMzhlZjg2Mzkz/ZGZiNzI2OThhMGEy/LmpwZw" class="court-image">
+                            <p class="court-image-caption">Diagram of a standard boxing ring.</p>
+                        </div>
+                    `
+                },
+                history: {
+                    title: "Boxing History",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Origins and Development</h3>
+                            <p>Boxing dates back to ancient civilizations like Egypt and Greece, with modern rules established in the 19th century.</p>
+                            <ul>
+                                <li><strong>1867:</strong> Marquess of Queensberry Rules introduced</li>
+                                <li><strong>1892:</strong> First gloved world championship fight</li>
+                                <li><strong>1920:</strong> Amateur boxing formalized</li>
+                                <li><strong>1904:</strong> Boxing included in Olympics</li>
+                                <li><strong>1984:</strong> Professional boxing gains global popularity</li>
+                            </ul>
+                            <div class="highlight">
+                                <p><strong>Fun Fact:</strong> The longest boxing match lasted 110 rounds over 7 hours in 1893.</p>
+                            </div>
+                        </div>
+                    `
+                },
+                players: {
+                    title: "Famous Boxers",
+                    content: `
+                        <div class="modal-section">
+                            <h3>All-Time Greats</h3>
+                            <ul>
+                                <li><strong>Muhammad Ali</strong> (USA) - Three-time heavyweight champion</li>
+                                <li><strong>Joe Louis</strong> (USA) - Longest-reigning heavyweight champion</li>
+                                <li><strong>Sugar Ray Robinson</strong> (USA) - Pound-for-pound great</li>
+                                <li><strong>Rocky Marciano</strong> (USA) - Undefeated heavyweight</li>
+                                <li><strong>Mike Tyson</strong> (USA) - Youngest heavyweight champion</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Current Stars</h3>
+                            <ul>
+                                <li><strong>Canelo Álvarez</strong> (Mexico) - Multi-division champion</li>
+                                <li><strong>Tyson Fury</strong> (UK) - Heavyweight champion</li>
+                                <li><strong>Oleksandr Usyk</strong> (Ukraine) - Unified heavyweight champion</li>
+                                <li><strong>Terence Crawford</strong> (USA) - Welterweight star</li>
+                                <li><strong>Katie Taylor</strong> (Ireland) - Women's lightweight champion</li>
+                            </ul>
+                        </div>
+                    `
+                }
+            },
+            gymnastics: {
+                basic: {
+                    title: "Gymnastics",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Basic Information</h3>
+                            <p>Gymnastics is a sport involving exercises requiring strength, flexibility, and balance, performed on various apparatus like beams and bars.</p>
+                            <div class="highlight">
+                                <p><strong>Did you know?</strong> Gymnasts can generate forces up to 14 times their body weight during routines.</p>
+                            </div>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Key Rules</h3>
+                            <ul>
+                                <li>Judged on difficulty, execution, and artistry</li>
+                                <li>Routines last 30-90 seconds depending on event</li>
+                                <li>Scoring out of 10 (modern system uses open-ended scoring)</li>
+                                <li>No touching apparatus outside designated areas</li>
+                                <li>Deductions for falls or errors</li>
+                            </ul>
+                        </div>
+                    `
+                },
+                details: {
+                    title: "Gymnastics Details",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Apparatus</h3>
+                            <ul>
+                                <li><strong>Men:</strong> Floor, Pommel Horse, Rings, Vault, Parallel Bars, High Bar</li>
+                                <li><strong>Women:</strong> Vault, Uneven Bars, Balance Beam, Floor Exercise</li>
+                                <li><strong>Floor:</strong> 12m × 12m sprung surface</li>
+                                <li><strong>Balance Beam:</strong> 5m long, 10cm wide</li>
+                                <li><strong>Vault:</strong> 1.35m high (men), 1.25m (women)</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Scoring</h3>
+                            <ul>
+                                <li><strong>Difficulty Score:</strong> Based on routine complexity</li>
+                                <li><strong>Execution Score:</strong> Starts at 10, deductions for errors</li>
+                                <li><strong>Neutral Deductions:</strong> For time violations or stepping out</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Floor Exercise Area Image</h3>
+                            <img src="https://imgs.search.brave.com/HVujPnI-Vg97LW8QzvNPhDilbNsEOp-evdaoO202zuk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/Z3ltbmFzdGljcy1o/aXN0b3J5LmNvbS93/cC1jb250ZW50L3Vw/bG9hZHMvMjAyMi8w/Ny8xOTg5LVZhdWx0/LWJvYXJkLWRpbWVu/c2lvbnMtMy0xMDI0/eDY3OS5qcGc" class="court-image">
+                            <p class="court-image-caption">Diagram of a standard gymnastics floor exercise area (12m × 12m).</p>
+                        </div>
+                    `
+                },
+                history: {
+                    title: "Gymnastics History",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Origins and Development</h3>
+                            <p>Gymnastics began in ancient Greece for physical training, with modern competitive gymnastics developing in the 19th century.</p>
+                            <ul>
+                                <li><strong>1811:</strong> First gymnastics club founded in Germany</li>
+                                <li><strong>1896:</strong> Men's gymnastics in first modern Olympics</li>
+                                <li><strong>1928:</strong> Women's gymnastics introduced to Olympics</li>
+                                <li><strong>1952:</strong> Modern apparatus standardized</li>
+                                <li><strong>2006:</strong> Open-ended scoring system introduced</li>
+                            </ul>
+                            <div class="highlight">
+                                <p><strong>Fun Fact:</strong> The perfect 10 score was first achieved by Nadia Comăneci at the 1976 Olympics.</p>
+                            </div>
+                        </div>
+                    `
+                },
+                players: {
+                    title: "Famous Gymnasts",
+                    content: `
+                        <div class="modal-section">
+                            <h3>All-Time Greats</h3>
+                            <ul>
+                                <li><strong>Nadia Comăneci</strong> (Romania) - First gymnast to score a perfect 10</li>
+                                <li><strong>Larisa Latynina</strong> (Soviet Union) - Most Olympic medals (18)</li>
+                                <li><strong>Vitaly Scherbo</strong> (Belarus) - Six gold medals in 1992</li>
+                                <li><strong>Kohei Uchimura</strong> (Japan) - Seven-time Olympic medalist</li>
+                                <li><strong>Sawao Kato</strong> (Japan) - 12 Olympic medals</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Current Stars</h3>
+                            <ul>
+                                <li><strong>Simone Biles</strong> (USA) - Most decorated gymnast ever</li>
+                                <li><strong>Max Whitlock</strong> (UK) - Pommel horse specialist</li>
+                                <li><strong>Sunisa Lee</strong> (USA) - 2020 Olympic all-around champion</li>
+                                <li><strong>Rebeca Andrade</strong> (Brazil) - First Brazilian Olympic medalist</li>
+                                <li><strong>Daiki Hashimoto</strong> (Japan) - 2020 Olympic all-around champion</li>
+                            </ul>
+                        </div>
+                    `
+                }
+            },
+            volleyball: {
+                basic: {
+                    title: "Volleyball",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Basic Information</h3>
+                            <p>Volleyball is a team sport where two teams of six players hit a ball over a net, aiming to score by grounding it on the opponent's court.</p>
+                            <div class="highlight">
+                                <p><strong>Did you know?</strong> The fastest volleyball serve was recorded at 135 km/h (84 mph) by Wilfredo León.</p>
+                            </div>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Key Rules</h3>
+                            <ul>
+                                <li>Matches are best of five sets to 25 points (15 for fifth set)</li>
+                                <li>Each team can touch the ball up to three times</li>
+                                <li>Ball must not be caught or thrown</li>
+                                <li>Players rotate positions after winning a rally</li>
+                                <li>Net violations result in a point for the opponent</li>
+                            </ul>
+                        </div>
+                    `
+                },
+                details: {
+                    title: "Volleyball Details",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Dimensions</h3>
+                            <ul>
+                                <li><strong>Court:</strong> 18m × 9m</li>
+                                <li><strong>Net:</strong> 2.43m high (men), 2.24m (women)</li>
+                                <li><strong>Attack Line:</strong> 3m from net</li>
+                                <li><strong>Ball:</strong> 65-67cm circumference, 260-280g</li>
+                                <li><strong>Free Zone:</strong> Minimum 3m around court</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Positions</h3>
+                            <ul>
+                                <li><strong>Setter:</strong> Orchestrates the offense</li>
+                                <li><strong>Outside Hitter:</strong> Primary attacker</li>
+                                <li><strong>Middle Blocker:</strong> Blocks and attacks at net</li>
+                                <li><strong>Opposite Hitter:</strong> Attacks from right side</li>
+                                <li><strong>Libero:</strong> Defensive specialist</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Court Image</h3>
+                            <img src="https://imgs.search.brave.com/pSppLLcLZsMHHfYs0IVhvKg4Kv8mwVS_JgsZcXx_XTg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/cGxheWluZ3ZvbGxl/eS5jb20vd3AtY29u/dGVudC91cGxvYWRz/LzIwMjQvMDgvdm9s/bGV5YmFsbC1jb3Vy/dC0wMS0xMDI0eDcy/NC53ZWJw" class="court-image">
+                            <p class="court-image-caption">Diagram of a standard indoor volleyball court.</p>
+                        </div>
+                    `
+                },
+                history: {
+                    title: "Volleyball History",
+                    content: `
+                        <div class="modal-section">
+                            <h3>Origins and Development</h3>
+                            <p>Volleyball was invented in 1895 by William G. Morgan in the USA as a less physical alternative to basketball.</p>
+                            <ul>
+                                <li><strong>1895:</strong> Volleyball created as "Mintonette"</li>
+                                <li><strong>1947:</strong> Fédération Internationale de Volleyball (FIVB) founded</li>
+                                <li><strong>1964:</strong> Volleyball introduced to Olympics</li>
+                                <li><strong>1996:</strong> Beach volleyball added to Olympics</li>
+                                <li><strong>1998:</strong> Rally scoring system introduced</li>
+                            </ul>
+                            <div class="highlight">
+                                <p><strong>Fun Fact:</strong> The first volleyball was made from a basketball bladder.</p>
+                            </div>
+                        </div>
+                    `
+                },
+                players: {
+                    title: "Famous Volleyball Players",
+                    content: `
+                        <div class="modal-section">
+                            <h3>All-Time Greats</h3>
+                            <ul>
+                                <li><strong>Karch Kiraly</strong> (USA) - Olympic gold in indoor and beach volleyball</li>
+                                <li><strong>Giba</strong> (Brazil) - Three-time Olympic medalist</li>
+                                <li><strong>Regla Torres</strong> (Cuba) - Three-time Olympic champion</li>
+                                <li><strong>Lang Ping</strong> (China) - Olympic gold as player and coach</li>
+                                <li><strong>Lorenzo Bernardi</strong> (Italy) - Two-time world champion</li>
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3>Current Stars</h3>
+                            <ul>
+                                <li><strong>Wilfredo León</strong> (Poland) - Record-breaking server</li>
+                                <li><strong>Jordan Larson</strong> (USA) - 2020 Olympic MVP</li>
+                                <li><strong>Tijana Bošković</strong> (Serbia) - World-class opposite hitter</li>
+                                <li><strong>Bruno Rezende</strong> (Brazil) - Elite setter</li>
+                                <li><strong>Eda Erdem</strong> (Turkey) - Dominant middle blocker</li>
+                            </ul>
+                        </div>
+                    `
+                }
+            }
+        };
+
+        function openModal(sport, section) {
+            const modal = document.getElementById('sportModal');
+            const content = document.getElementById('modalContent');
+            const data = sportData[sport][section];
+            content.innerHTML = `
+                <h2>${data.title}</h2>
+                ${data.content}
+            `;
+            modal.style.display = 'block';
+            document.addEventListener('keydown', handleEscKey);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('sportModal');
+            modal.style.display = 'none';
+            document.removeEventListener('keydown', handleEscKey);
+        }
+
+        function handleEscKey(event) {
+            if (event.key === 'Escape') closeModal();
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('sportModal');
+            if (event.target == modal) closeModal();
+        }
+    </script>
+</body>
+</html>
