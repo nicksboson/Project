@@ -1,1 +1,1284 @@
-changes to be done
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming Sports Events | SportsHub</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-dark: #0a0e12; /* Deep dark blue-black */
+            --secondary-dark: #1a2129; /* Dark slate */
+            --accent: #00d4c0; /* Vibrant teal */
+            --accent-secondary: #0088ff; /* Bright blue */
+            --text: #f5f7fa;
+            --text-secondary: #b0bac5;
+            --highlight: #263340; /* Darker blue for hover */
+            --card-bg: #151e27; /* Slightly lighter than secondary */
+            --border: #2a3a4a; /* Subtle border color */
+            
+            /* Sport-specific colors */
+            --cricket: #2ecc71; /* Emerald */
+            --football: #3498db; /* Bright blue */
+            --basketball: #e74c3c; /* Red */
+            --hockey: #9b59b6; /* Purple */
+            --kabaddi: #f39c12; /* Orange */
+            --tennis: #1abc9c; /* Turquoise */
+            --baseball: #e67e22; /* Carrot */
+            --badminton: #27ae60; /* Nephritis */
+            --wrestling: #d35400; /* Pumpkin */
+            --volleyball: #2980b9; /* Belize hole */
+            --f1: #c0392b; /* Pomegranate */
+            --golf: #16a085; /* Green sea */
+            
+            --gradient: linear-gradient(135deg, var(--accent-secondary), var(--accent));
+            --card-gradient: linear-gradient(135deg, var(--secondary-dark), var(--primary-dark));
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            --border-radius: 12px;
+            --card-radius: 10px;
+            --button-shadow: 0 3px 10px rgba(0, 212, 192, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background: var(--primary-dark);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header with glass morphism effect */
+        header {
+            background: rgba(10, 17, 24, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 20px 30px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 30px;
+            border-radius: var(--border-radius);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 3px;
+        }
+
+        .logo-icon {
+            margin-right: 15px;
+            font-size: 2.2rem;
+            color: var(--accent);
+        }
+
+        .home-btn {
+            background: var(--gradient);
+            color: var(--text);
+            padding: 12px 28px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 15px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            box-shadow: var(--button-shadow);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .home-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: var(--transition);
+        }
+
+        .home-btn:hover::before {
+            left: 100%;
+        }
+
+        .home-btn i {
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .home-btn:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 5px 15px rgba(0, 212, 192, 0.4);
+        }
+
+        .home-btn:hover i {
+            transform: scale(1.2);
+        }
+
+        .home-btn:active {
+            transform: translateY(0);
+            box-shadow: var(--button-shadow);
+        }
+
+        /* Search bar with modern look */
+        .search-container {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 20px 15px 50px;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--border);
+            background: var(--secondary-dark);
+            color: var(--text);
+            font-size: 16px;
+            transition: var(--transition);
+            box-shadow: var(--card-shadow);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(0, 212, 192, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+        }
+
+        /* Filter buttons with modern styling */
+        .filter-container {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 25px;
+            overflow-x: auto;
+            padding: 10px 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) var(--secondary-dark);
+        }
+
+        .filter-container::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .filter-container::-webkit-scrollbar-track {
+            background: var(--secondary-dark);
+            border-radius: 10px;
+        }
+
+        .filter-container::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 10px;
+        }
+
+        .filter-btn {
+            background: var(--card-bg);
+            color: var(--text);
+            padding: 10px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 14px;
+            white-space: nowrap;
+            border: 1px solid var(--border);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--button-shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: var(--transition);
+        }
+
+        .filter-btn:hover::before {
+            left: 100%;
+        }
+
+        .filter-btn i {
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .filter-btn.active {
+            background: var(--gradient);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(0, 212, 192, 0.3);
+        }
+
+        .filter-btn:hover {
+            background: var(--gradient);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 5px 15px rgba(0, 212, 192, 0.4);
+        }
+
+        .filter-btn:hover i {
+            transform: scale(1.2);
+        }
+
+        .filter-btn:active {
+            transform: translateY(0);
+            box-shadow: var(--button-shadow);
+        }
+
+        /* Region filter styling */
+        .region-filter {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 25px;
+            justify-content: center;
+            padding: 10px 0;
+            flex-wrap: wrap;
+        }
+
+        .region-btn {
+            background: var(--card-bg);
+            color: var(--text);
+            padding: 10px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            font-size: 14px;
+            border: 1px solid var(--border);
+            box-shadow: var(--button-shadow);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .region-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: var(--transition);
+        }
+
+        .region-btn:hover::before {
+            left: 100%;
+        }
+
+        .region-btn i {
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .region-btn.active {
+            background: var(--gradient);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 4px 15px rgba(0, 212, 192, 0.3);
+        }
+
+        .region-btn:hover {
+            background: var(--gradient);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 5px 15px rgba(0, 212, 192, 0.4);
+        }
+
+        .region-btn:hover i {
+            transform: scale(1.2);
+        }
+
+        .region-btn:active {
+            transform: translateY(0);
+            box-shadow: var(--button-shadow);
+        }
+
+        /* Events grid with premium cards */
+        .events-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .event-card {
+            background: var(--card-bg);
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid var(--border);
+            box-shadow: var(--card-shadow);
+            position: relative;
+        }
+
+        .event-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: var(--accent);
+        }
+
+        .event-details {
+            padding: 20px;
+        }
+
+        .event-league {
+            font-family: 'Bebas Neue', sans-serif;
+            color: var(--accent);
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+            line-height: 1.4;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .event-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            margin: 12px 0;
+            line-height: 1.4;
+            color: var(--text);
+        }
+
+        .event-significance {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 15px;
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        .event-info {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            padding: 6px 0;
+            line-height: 1.5;
+        }
+
+        .event-info i {
+            margin-right: 12px;
+            width: 16px;
+            color: var(--accent);
+            font-size: 16px;
+            margin-top: 2px;
+        }
+
+        /* Sport tags with better styling */
+        .sport-tag {
+            display: inline-flex;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            align-items: center;
+            gap: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 1px solid transparent;
+        }
+
+        .sport-tag.cricket { background: rgba(46, 204, 113, 0.15); color: var(--cricket); border-color: rgba(46, 204, 113, 0.3); }
+        .sport-tag.football { background: rgba(52, 152, 219, 0.15); color: var(--football); border-color: rgba(52, 152, 219, 0.3); }
+        .sport-tag.basketball { background: rgba(231, 76, 60, 0.15); color: var(--basketball); border-color: rgba(231, 76, 60, 0.3); }
+        .sport-tag.hockey { background: rgba(155, 89, 182, 0.15); color: var(--hockey); border-color: rgba(155, 89, 182, 0.3); }
+        .sport-tag.kabaddi { background: rgba(243, 156, 18, 0.15); color: var(--kabaddi); border-color: rgba(243, 156, 18, 0.3); }
+        .sport-tag.tennis { background: rgba(26, 188, 156, 0.15); color: var(--tennis); border-color: rgba(26, 188, 156, 0.3); }
+        .sport-tag.baseball { background: rgba(230, 126, 34, 0.15); color: var(--baseball); border-color: rgba(230, 126, 34, 0.3); }
+        .sport-tag.badminton { background: rgba(39, 174, 96, 0.15); color: var(--badminton); border-color: rgba(39, 174, 96, 0.3); }
+        .sport-tag.wrestling { background: rgba(211, 84, 0, 0.15); color: var(--wrestling); border-color: rgba(211, 84, 0, 0.3); }
+        .sport-tag.volleyball { background: rgba(41, 128, 185, 0.15); color: var(--volleyball); border-color: rgba(41, 128, 185, 0.3); }
+        .sport-tag.f1 { background: rgba(192, 57, 43, 0.15); color: var(--f1); border-color: rgba(192, 57, 43, 0.3); }
+        .sport-tag.golf { background: rgba(22, 160, 133, 0.15); color: var(--golf); border-color: rgba(22, 160, 133, 0.3); }
+
+        /* Watch links with better styling */
+        .watch-links {
+            margin-top: 15px;
+            display: inline-flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .watch-link {
+            display: inline-flex;
+            background: var(--secondary-dark);
+            color: var(--text);
+            padding: 8px 14px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 13px;
+            transition: var(--transition);
+            border: 1px solid var(--border);
+            align-items: center;
+            gap: 6px;
+        }
+
+        .watch-link i {
+            font-size: 14px;
+        }
+
+        .watch-link:hover {
+            background: var(--gradient);
+            border-color: transparent;
+            transform: translateY(-2px);
+        }
+
+        /* Countdown styling */
+        .countdown {
+            color: var(--accent);
+            font-weight: 600;
+            margin-top: 15px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .countdown i {
+            font-size: 16px;
+        }
+
+        /* Live badge with animation */
+        .live-badge {
+            background: var(--gradient);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            animation: pulse 2s infinite;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .live-badge i {
+            font-size: 10px;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 212, 192, 0.7); }
+            70% { transform: scale(1.02); box-shadow: 0 0 0 8px rgba(0, 212, 192, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 212, 192, 0); }
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Loading and error states */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 16px;
+            color: var(--text-secondary);
+            grid-column: 1 / -1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .loading i {
+            font-size: 24px;
+            color: var(--accent);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error {
+            color: var(--accent);
+            text-align: center;
+            padding: 30px;
+            font-size: 16px;
+            grid-column: 1 / -1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .error i {
+            font-size: 28px;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 1024px) {
+            .events-container {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+                padding: 15px 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            .filter-container {
+                padding: 8px 0;
+            }
+
+            .filter-btn, .region-btn {
+                padding: 8px 20px;
+                font-size: 13px;
+            }
+
+            .home-btn {
+                padding: 10px 22px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .home-btn {
+                padding: 8px 18px;
+                font-size: 13px;
+            }
+
+            .filter-btn, .region-btn {
+                padding: 8px 16px;
+                font-size: 12px;
+            }
+
+            .search-input {
+                padding: 12px 15px 12px 45px;
+                font-size: 15px;
+            }
+
+            .event-title {
+                font-size: 18px;
+            }
+
+            .event-league {
+                font-size: 16px;
+            }
+
+            .events-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>
+                <span class="logo-icon"><i class="fas fa-trophy"></i></span>
+                SportsHub Events
+            </h1>
+            <a href="index.html" class="home-btn">
+                <i class="fas fa-home"></i> Home
+            </a>
+        </header>
+
+        <div class="search-container">
+            <i class="search-icon fas fa-search"></i>
+            <input type="text" id="searchInput" class="search-input" placeholder="Search for events, teams, or leagues...">
+        </div>
+
+        <div class="region-filter">
+            <button class="region-btn active" data-region="all">
+                <i class="fas fa-globe"></i> All Regions
+            </button>
+            <button class="region-btn" data-region="india">
+                <i class="fas fa-flag"></i> India
+            </button>
+            <button class="region-btn" data-region="global">
+                <i class="fas fa-earth-americas"></i> Global
+            </button>
+        </div>
+
+        <div class="filter-container">
+            <button class="filter-btn active" data-sport="all">
+                <i class="fas fa-list"></i> All Sports
+            </button>
+            <button class="filter-btn" data-sport="cricket">
+                <i class="fas fa-cricket"></i> Cricket
+            </button>
+            <button class="filter-btn" data-sport="football">
+                <i class="fas fa-futbol"></i> Football
+            </button>
+            <button class="filter-btn" data-sport="basketball">
+                <i class="fas fa-basketball"></i> Basketball
+            </button>
+            <button class="filter-btn" data-sport="hockey">
+                <i class="fas fa-hockey-puck"></i> Hockey
+            </button>
+            <button class="filter-btn" data-sport="kabaddi">
+                <i class="fas fa-people-arrows"></i> Kabaddi
+            </button>
+            <button class="filter-btn" data-sport="tennis">
+                <i class="fas fa-table-tennis"></i> Tennis
+            </button>
+            <button class="filter-btn" data-sport="baseball">
+                <i class="fas fa-baseball"></i> Baseball
+            </button>
+            <button class="filter-btn" data-sport="badminton">
+                <i class="fas fa-table-tennis"></i> Badminton
+            </button>
+            <button class="filter-btn" data-sport="wrestling">
+                <i class="fas fa-wrestling"></i> Wrestling
+            </button>
+            <button class="filter-btn" data-sport="volleyball">
+                <i class="fas fa-volleyball-ball"></i> Volleyball
+            </button>
+            <button class="filter-btn" data-sport="f1">
+                <i class="fas fa-flag-checkered"></i> Formula 1
+            </button>
+            <button class="filter-btn" data-sport="golf">
+                <i class="fas fa-golf-ball"></i> Golf
+            </button>
+        </div>
+
+        <div class="events-container" id="eventsContainer">
+            <div class="loading">
+                <i class="fas fa-spinner"></i>
+                Loading upcoming events...
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Updated sample data with events up to 2025
+        const sportsEvents = [
+            // Indian Events - IPL Cricket
+            {
+                id: 1,
+                title: "Mumbai Indians vs Chennai Super Kings",
+                league: "IPL 2025 - Match 23",
+                sport: "cricket",
+                region: "india",
+                date: "2025-04-15T19:30:00",
+                venue: "Wankhede Stadium, Mumbai",
+                significance: "Rivalry match with playoff implications",
+                watchLinks: [
+                    { name: "JioCinema", url: "#jio", icon: "fas fa-play" },
+                    { name: "Star Sports", url: "#star", icon: "fas fa-tv" },
+                    { name: "Disney+ Hotstar", url: "#hotstar", icon: "fas fa-desktop" }
+                ]
+            },
+            {
+                id: 2,
+                title: "Royal Challengers Bangalore vs Kolkata Knight Riders",
+                league: "IPL 2025 - Match 24",
+                sport: "cricket",
+                region: "india",
+                date: "2025-04-16T19:30:00",
+                venue: "M. Chinnaswamy Stadium, Bangalore",
+                significance: "High-scoring battle expected",
+                watchLinks: [
+                    { name: "JioCinema", url: "#jio", icon: "fas fa-play" },
+                    { name: "Star Sports", url: "#star", icon: "fas fa-tv" },
+                    { name: "Disney+ Hotstar", url: "#hotstar", icon: "fas fa-desktop" }
+                ]
+            },
+            {
+                id: 3,
+                title: "Delhi Capitals vs Sunrisers Hyderabad",
+                league: "IPL 2025 - Match 25",
+                sport: "cricket",
+                region: "india",
+                date: "2025-04-17T15:30:00",
+                venue: "Arun Jaitley Stadium, Delhi",
+                significance: "Mid-table clash for crucial points",
+                watchLinks: [
+                    { name: "JioCinema", url: "#jio", icon: "fas fa-play" },
+                    { name: "Star Sports", url: "#star", icon: "fas fa-tv" },
+                    { name: "Disney+ Hotstar", url: "#hotstar", icon: "fas fa-desktop" }
+                ]
+            },
+            // Indian Football
+            {
+                id: 4,
+                title: "Mohun Bagan Super Giant vs Kerala Blasters",
+                league: "Indian Super League - Matchday 12",
+                sport: "football",
+                region: "india",
+                date: "2025-01-15T19:00:00",
+                venue: "Salt Lake Stadium, Kolkata",
+                significance: "Top teams battle for league lead",
+                watchLinks: [
+                    { name: "JioTV", url: "#jiotv", icon: "fas fa-tv" },
+                    { name: "Sports18", url: "#sports18", icon: "fas fa-tv" },
+                    { name: "Disney+ Hotstar", url: "#hotstar", icon: "fas fa-desktop" }
+                ]
+            },
+            // Pro Kabaddi League
+            {
+                id: 5,
+                title: "U Mumba vs Puneri Paltan",
+                league: "Pro Kabaddi League - Eliminator",
+                sport: "kabaddi",
+                region: "india",
+                date: "2025-02-10T20:00:00",
+                venue: "Sardar Vallabhbhai Patel Indoor Stadium, Mumbai",
+                significance: "Maharashtra derby for semifinal spot",
+                watchLinks: [
+                    { name: "Star Sports", url: "#star", icon: "fas fa-tv" },
+                    { name: "Disney+ Hotstar", url: "#hotstar", icon: "fas fa-desktop" },
+                    { name: "JioTV", url: "#jiotv", icon: "fas fa-tv" }
+                ]
+            },
+            {
+                id: 6,
+                title: "Patna Pirates vs Haryana Steelers",
+                league: "Pro Kabaddi League - Semifinal",
+                sport: "kabaddi",
+                region: "india",
+                date: "2025-02-12T21:00:00",
+                venue: "Patliputra Sports Complex, Patna",
+                significance: "Defending champions face strong contenders",
+                watchLinks: [
+                    { name: "Star Sports", url: "#star", icon: "fas fa-tv" },
+                    { name: "Disney+ Hotstar", url: "#hotstar", icon: "fas fa-desktop" },
+                    { name: "JioTV", url: "#jiotv", icon: "fas fa-tv" }
+                ]
+            },
+            // Hockey India League
+            {
+                id: 7,
+                title: "Ranchi Rays vs Punjab Warriors",
+                league: "Hockey India League - Week 3",
+                sport: "hockey",
+                region: "india",
+                date: "2025-03-01T18:00:00",
+                venue: "Birsa Munda Hockey Stadium, Ranchi",
+                significance: "Regional rivalry with national stars",
+                watchLinks: [
+                    { name: "Star Sports", url: "#star", icon: "fas fa-tv" },
+                    { name: "FanCode", url: "#fancode", icon: "fas fa-play" },
+                    { name: "Disney+ Hotstar", url: "#hotstar", icon: "fas fa-desktop" }
+                ]
+            },
+            // Badminton - India
+            {
+                id: 8,
+                title: "Lakshya Sen vs Kidambi Srikanth",
+                league: "Premier Badminton League - Semifinal",
+                sport: "badminton",
+                region: "india",
+                date: "2025-03-15T17:00:00",
+                venue: "Gachibowli Indoor Stadium, Hyderabad",
+                significance: "Rising star vs veteran showdown",
+                watchLinks: [
+                    { name: "Star Sports", url: "#star", icon: "fas fa-tv" },
+                    { name: "Disney+ Hotstar", url: "#hotstar", icon: "fas fa-desktop" },
+                    { name: "JioTV", url: "#jiotv", icon: "fas fa-tv" }
+                ]
+            },
+            // Wrestling - India
+            {
+                id: 9,
+                title: "Aman Sehrawat vs Vinesh Phogat",
+                league: "Pro Wrestling League - Finals",
+                sport: "wrestling",
+                region: "india",
+                date: "2025-03-20T18:30:00",
+                venue: "K.D. Jadhav Wrestling Stadium, Delhi",
+                significance: "Olympic hopefuls in championship bout",
+                watchLinks: [
+                    { name: "Sony Sports", url: "#sony", icon: "fas fa-tv" },
+                    { name: "JioTV", url: "#jiotv", icon: "fas fa-tv" },
+                    { name: "FanCode", url: "#fancode", icon: "fas fa-play" }
+                ]
+            },
+            // Volleyball - India
+            {
+                id: 10,
+                title: "Kochi Blue Spikers vs Bengaluru Torpedoes",
+                league: "Prime Volleyball League - Finals",
+                sport: "volleyball",
+                region: "india",
+                date: "2025-03-25T19:00:00",
+                venue: "Jawaharlal Nehru Indoor Stadium, Kochi",
+                significance: "South Indian teams vie for title",
+                watchLinks: [
+                    { name: "Sony Sports", url: "#sony", icon: "fas fa-tv" },
+                    { name: "FanCode", url: "#fancode", icon: "fas fa-play" },
+                    { name: "JioTV", url: "#jiotv", icon: "fas fa-tv" }
+                ]
+            },
+            // International Events
+            {
+                id: 11,
+                title: "Boston Celtics vs Denver Nuggets",
+                league: "NBA - Finals Game 1",
+                sport: "basketball",
+                region: "global",
+                date: "2025-06-05T20:30:00",
+                venue: "TD Garden, Boston",
+                significance: "Opening game of NBA championship series",
+                watchLinks: [
+                    { name: "ESPN+", url: "#espn", icon: "fas fa-play" },
+                    { name: "NBA League Pass", url: "#nba", icon: "fas fa-basketball" },
+                    { name: "Hulu", url: "#hulu", icon: "fas fa-tv" }
+                ]
+            },
+            {
+                id: 12,
+                title: "Arsenal vs Manchester City",
+                league: "Premier League - Matchday 30",
+                sport: "football",
+                region: "global",
+                date: "2025-04-05T15:00:00",
+                venue: "Emirates Stadium, London",
+                significance: "Title race decider",
+                watchLinks: [
+                    { name: "NBC Sports", url: "#nbc", icon: "fas fa-tv" },
+                    { name: "Peacock", url: "#peacock", icon: "fas fa-play" },
+                    { name: "Sky Sports", url: "#sky", icon: "fas fa-tv" }
+                ]
+            },
+            {
+                id: 13,
+                title: "Los Angeles Dodgers vs New York Mets",
+                league: "MLB - NLCS Game 3",
+                sport: "baseball",
+                region: "global",
+                date: "2025-10-15T19:08:00",
+                venue: "Dodger Stadium, Los Angeles",
+                significance: "Pivotal game in National League Championship",
+                watchLinks: [
+                    { name: "ESPN", url: "#espn", icon: "fas fa-tv" },
+                    { name: "MLB.TV", url: "#mlb", icon: "fas fa-baseball" },
+                    { name: "FOX Sports", url: "#fox", icon: "fas fa-tv" }
+                ]
+            },
+            {
+                id: 14,
+                title: "Carlos Alcaraz vs Jannik Sinner",
+                league: "ATP Tour - Wimbledon Final",
+                sport: "tennis",
+                region: "global",
+                date: "2025-07-13T14:00:00",
+                venue: "All England Club, London",
+                significance: "Next-gen stars battle for Grand Slam title",
+                watchLinks: [
+                    { name: "Tennis Channel", url: "#tennis", icon: "fas fa-tv" },
+                    { name: "ESPN+", url: "#espn", icon: "fas fa-play" },
+                    { name: "BBC Sport", url: "#bbc", icon: "fas fa-tv" }
+                ]
+            },
+            {
+                id: 15,
+                title: "Edmonton Oilers vs New York Rangers",
+                league: "NHL - Stanley Cup Finals Game 2",
+                sport: "hockey",
+                region: "global",
+                date: "2025-06-10T20:00:00",
+                venue: "Rogers Place, Edmonton",
+                significance: "Critical game in championship series",
+                watchLinks: [
+                    { name: "NHL Network", url: "#nhl", icon: "fas fa-tv" },
+                    { name: "ESPN+", url: "#espn", icon: "fas fa-play" },
+                    { name: "Sportsnet", url: "#sportsnet", icon: "fas fa-tv" }
+                ]
+            },
+            {
+                id: 16,
+                title: "India vs England",
+                league: "Women's Cricket World Cup - Semifinal",
+                sport: "cricket",
+                region: "india",
+                date: "2025-10-12T13:30:00",
+                venue: "Eden Gardens, Kolkata",
+                significance: "Knockout clash for World Cup final spot",
+                watchLinks: [
+                    { name: "Star Sports", url: "#star", icon: "fas fa-tv" },
+                    { name: "Disney+ Hotstar", url: "#hotstar", icon: "fas fa-desktop" },
+                    { name: "ICC.tv", url: "#icc", icon: "fas fa-play" }
+                ]
+            },
+            {
+                id: 17,
+                title: "Australian Grand Prix",
+                league: "Formula 1 - Round 1",
+                sport: "f1",
+                region: "global",
+                date: "2025-03-16T15:00:00",
+                venue: "Albert Park Circuit, Melbourne",
+                significance: "Season opener with new regulations",
+                watchLinks: [
+                    { name: "ESPN", url: "#espn", icon: "fas fa-tv" },
+                    { name: "Sky Sports F1", url: "#skyf1", icon: "fas fa-tv" },
+                    { name: "F1 TV", url: "#f1tv", icon: "fas fa-play" }
+                ]
+            },
+            {
+                id: 18,
+                title: "US Open - Final Round",
+                league: "PGA Tour - Major Championship",
+                sport: "golf",
+                region: "global",
+                date: "2025-06-15T08:00:00",
+                venue: "Oakmont Country Club, Pennsylvania",
+                significance: "Final round of prestigious golf major",
+                watchLinks: [
+                    { name: "ESPN", url: "#espn", icon: "fas fa-tv" },
+                    { name: "NBC Sports", url: "#nbc", icon: "fas fa-tv" },
+                    { name: "USOpen.com", url: "#usopen", icon: "fas fa-desktop" }
+                ]
+            },
+            // Additional events
+            {
+                id: 19,
+                title: "Bayern Munich vs Paris Saint-Germain",
+                league: "UEFA Champions League - Quarterfinal",
+                sport: "football",
+                region: "global",
+                date: "2025-04-08T21:00:00",
+                venue: "Allianz Arena, Munich",
+                significance: "European giants clash in knockout stage",
+                watchLinks: [
+                    { name: "ESPN+", url: "#espn", icon: "fas fa-play" },
+                    { name: "Paramount+", url: "#paramount", icon: "fas fa-tv" },
+                    { name: "DAZN", url: "#dazn", icon: "fas fa-play" }
+                ]
+            },
+            {
+                id: 20,
+                title: "Australia vs England",
+                league: "Women's Ashes - Test Match",
+                sport: "cricket",
+                region: "global",
+                date: "2025-01-12T10:00:00",
+                venue: "Melbourne Cricket Ground, Melbourne",
+                significance: "Historic day-night Test in multi-format series",
+                watchLinks: [
+                    { name: "Star Sports", url: "#star", icon: "fas fa-tv" },
+                    { name: "Disney+ Hotstar", url: "#hotstar", icon: "fas fa-desktop" },
+                    { name: "ICC.tv", url: "#icc", icon: "fas fa-play" }
+                ]
+            }
+        ];
+
+        // Function to format date
+        function formatDate(dateString) {
+            const options = {
+                weekday: 'long',
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+
+        // Function to calculate countdown
+        function getCountdown(eventDate) {
+            const now = new Date();
+            const event = new Date(eventDate);
+            const diff = event - now;
+
+            if (diff <= 0) return { text: "Live Now!", icon: "fas fa-broadcast-tower" };
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+            if (days > 0) return { text: `${days}d ${hours}h until event`, icon: "far fa-calendar-alt" };
+            if (hours > 0) return { text: `${hours}h ${minutes}m until event`, icon: "far fa-clock" };
+            return { text: `${minutes}m until event`, icon: "fas fa-hourglass-half" };
+        }
+
+        // Function to check if event is live
+        function isLive(eventDate) {
+            const now = new Date();
+            const event = new Date(eventDate);
+            const diff = event - now;
+            return diff <= 0 && diff > -10800000; // Live if started within 3 hours
+        }
+
+        // Function to get sport icon
+        function getSportIcon(sport) {
+            const icons = {
+                cricket: 'fas fa-cricket',
+                football: 'fas fa-futbol',
+                basketball: 'fas fa-basketball',
+                hockey: 'fas fa-hockey-puck',
+                kabaddi: 'fas fa-people-arrows',
+                tennis: 'fas fa-table-tennis',
+                baseball: 'fas fa-baseball',
+                badminton: 'fas fa-table-tennis',
+                wrestling: 'fas fa-wrestling',
+                volleyball: 'fas fa-volleyball-ball',
+                f1: 'fas fa-flag-checkered',
+                golf: 'fas fa-golf-ball'
+            };
+            return icons[sport] || 'fas fa-trophy';
+        }
+
+        // Function to render events
+        function renderEvents(events) {
+            const container = document.getElementById('eventsContainer');
+
+            if (events.length === 0) {
+                container.innerHTML = `
+                    <div class="error">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        No events found matching your criteria.
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = '';
+
+            events.forEach(event => {
+                const card = document.createElement('div');
+                card.className = 'event-card';
+
+                const watchLinksHTML = event.watchLinks.map(link =>
+                    `<a href="${link.url}" class="watch-link" target="_blank"><i class="${link.icon}"></i> ${link.name}</a>`
+                ).join('');
+
+                const liveStatus = isLive(event.date) ? '<span class="live-badge"><i class="fas fa-circle"></i> LIVE</span>' : '';
+                const sportIcon = getSportIcon(event.sport);
+                const countdown = getCountdown(event.date);
+
+                card.innerHTML = `
+                    <div class="event-details">
+                        <div class="sport-tag ${event.sport}"><i class="${sportIcon}"></i> ${event.sport.charAt(0).toUpperCase() + event.sport.slice(1)}</div>
+                        <div class="event-league"><i class="fas fa-trophy"></i> ${event.league} ${liveStatus}</div>
+                        <h3 class="event-title">${event.title}</h3>
+                        <div class="event-significance">${event.significance}</div>
+                        <div class="event-info">
+                            <i class="far fa-calendar"></i> ${formatDate(event.date)}
+                        </div>
+                        <div class="event-info">
+                            <i class="fas fa-map-marker-alt"></i> ${event.venue}
+                        </div>
+                        <div class="countdown"><i class="${countdown.icon}"></i> ${countdown.text}</div>
+                        <div class="watch-links">
+                            <div class="event-info">
+                                <i class="fas fa-tv"></i> Watch on:
+                            </div>
+                            ${watchLinksHTML}
+                        </div>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        // Filter events by sport and region
+        function filterEvents(sport, region) {
+            let filtered = sportsEvents;
+
+            if (sport !== 'all') {
+                filtered = filtered.filter(event => event.sport === sport);
+            }
+
+            if (region !== 'all') {
+                filtered = filtered.filter(event => event.region === region);
+            }
+
+            return filtered;
+        }
+
+        // Search events
+        function searchEvents(query) {
+            if (!query) return sportsEvents;
+
+            query = query.toLowerCase();
+            return sportsEvents.filter(event => {
+                return (
+                    event.title.toLowerCase().includes(query) ||
+                    event.league.toLowerCase().includes(query) ||
+                    event.sport.toLowerCase().includes(query) ||
+                    event.venue.toLowerCase().includes(query) ||
+                    event.significance.toLowerCase().includes(query)
+                );
+            });
+        }
+
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', () => {
+            // Render all events initially
+            setTimeout(() => renderEvents(sportsEvents), 500); // Simulate loading
+
+            // Setup sport filter buttons
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    const sport = button.getAttribute('data-sport');
+                    const region = document.querySelector('.region-btn.active').getAttribute('data-region');
+                    const query = document.getElementById('searchInput').value;
+
+                    const filteredEvents = filterEvents(sport, region);
+                    const searchedEvents = query ? searchEvents(query).filter(e => filteredEvents.includes(e)) : filteredEvents;
+                    renderEvents(searchedEvents);
+                });
+            });
+
+            // Setup region filter buttons
+            const regionButtons = document.querySelectorAll('.region-btn');
+            regionButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    regionButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    const region = button.getAttribute('data-region');
+                    const sport = document.querySelector('.filter-btn.active').getAttribute('data-sport');
+                    const query = document.getElementById('searchInput').value;
+
+                    const filteredEvents = filterEvents(sport, region);
+                    const searchedEvents = query ? searchEvents(query).filter(e => filteredEvents.includes(e)) : filteredEvents;
+                    renderEvents(searchedEvents);
+                });
+            });
+
+            // Setup search functionality
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', () => {
+                const query = searchInput.value;
+                const activeSport = document.querySelector('.filter-btn.active').getAttribute('data-sport');
+                const activeRegion = document.querySelector('.region-btn.active').getAttribute('data-region');
+
+                const filteredEvents = filterEvents(activeSport, activeRegion);
+                const searchedEvents = searchEvents(query).filter(e => filteredEvents.includes(e));
+                renderEvents(searchedEvents);
+            });
+
+            // Update countdowns every minute
+            setInterval(() => {
+                const countdowns = document.querySelectorAll('.countdown');
+                if (countdowns.length > 0) {
+                    const activeSport = document.querySelector('.filter-btn.active').getAttribute('data-sport');
+                    const activeRegion = document.querySelector('.region-btn.active').getAttribute('data-region');
+                    const query = document.getElementById('searchInput').value;
+
+                    const filteredEvents = filterEvents(activeSport, activeRegion);
+                    const searchedEvents = query ? searchEvents(query).filter(e => filteredEvents.includes(e)) : filteredEvents;
+                    renderEvents(searchedEvents);
+                }
+            }, 60000);
+        });
+    </script>
+</body>
+</html>
+
+<!--did the changes in the file -->
