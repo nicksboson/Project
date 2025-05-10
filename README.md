@@ -41,6 +41,9 @@
 - **Google Fonts** – Bebas Neue (headers), Montserrat (body)
 
 ---
+## Check it out 
+https://nicksboson.github.io/Project/index.html
+
 
 ## 💻 Setup Instructions
 
@@ -67,3 +70,4 @@ Licensed under the MIT License.
 Issues: Submit on GitHub
 
 Built with passion for sports and web development.
+
